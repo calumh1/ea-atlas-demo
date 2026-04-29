@@ -119,6 +119,8 @@ When Calum says "I have the file", confirm the columns match the SharePoint sche
 
 Eventual destination. Schemas are in `liberty_ea_sharepoint_lists.xlsx` from the parent project. Lists: Domains, Capabilities, Applications, CapabilityApplications, CapabilityMaturity, TaxonomySegments, TaxonomyServices, Technologies, Projects, ProjectCapabilities, ProjectApplications.
 
+**TaxonomyServices schema addition (not yet in XLSX):** Add `Description` column — single line of text, optional. All 72 service records in `data-embedded.js` are populated. When provisioning the SharePoint list, add this column before importing.
+
 ImpactType enum: Enables, Enhances, Retires, Depends On.
 RelationshipType enum: Replaces, Upgrades, Decommissions, Implements.
 

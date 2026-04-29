@@ -133,9 +133,23 @@
   }
 
   function openServicePanel(svcTitle) {
+    const svc   = cache.taxonomyServices.find(s => s.Title === svcTitle);
     const techs = cache.technologies.filter(t => t.Service === svcTitle);
 
-    const body = techs.length ? `
+    const descHtml = svc?.Description
+      ? `<div class="detail-prose" style="margin-bottom:12px">${esc(svc.Description)}</div>`
+      : '';
+
+    const linksHtml = `<div class="tag-row" style="margin-bottom:14px">
+      ${svc?.ConfigStandardsURL
+        ? `<a href="${esc(svc.ConfigStandardsURL)}" target="_blank" class="tag">Config standards ↗</a>`
+        : `<span class="tag" style="opacity:.45;cursor:default">No config standards</span>`}
+      ${svc?.SolutionArchitectureURL
+        ? `<a href="${esc(svc.SolutionArchitectureURL)}" target="_blank" class="tag">Solution architecture ↗</a>`
+        : `<span class="tag" style="opacity:.45;cursor:default">No solution architecture</span>`}
+    </div>`;
+
+    const body = descHtml + linksHtml + (techs.length ? `
       <div class="detail-section">
         <div class="detail-section-label">${techs.length} ${techs.length === 1 ? 'standard' : 'standards'}</div>
         <ul class="linked-list">
@@ -146,14 +160,10 @@
             </div>
             ${t.Description ? `<div class="meta" style="color:var(--ink-2);font-size:12.5px">${esc(t.Description)}</div>` : ''}
             ${t.StrategyAlignment ? `<div class="meta" style="color:var(--ink-3);font-size:12px"><strong>Strategy:</strong> ${esc(t.StrategyAlignment)}</div>` : ''}
-            ${t.ConfigStandardsURL || t.SolutionArchitectureURL ? `<div class="tag-row" style="margin-top:4px">
-              ${t.ConfigStandardsURL ? `<a href="${esc(t.ConfigStandardsURL)}" target="_blank" class="tag">Config standards ↗</a>` : ''}
-              ${t.SolutionArchitectureURL ? `<a href="${esc(t.SolutionArchitectureURL)}" target="_blank" class="tag">Solution architecture ↗</a>` : ''}
-            </div>` : ''}
           </li>`).join('')}
         </ul>
       </div>
-    ` : `<div class="detail-prose" style="color:var(--ink-3)">No technologies recorded for this service yet.</div>`;
+    ` : `<div class="detail-prose" style="color:var(--ink-3)">No technologies recorded for this service yet.</div>`);
 
     window.atlasUI.openPanel({
       eyebrow: 'Service',

@@ -29,7 +29,7 @@
     { id: 'technology-architecture', label: 'Technology Architecture',
       sections: [
         { id: 'taxonomy', label: 'Technology Taxonomy', view: 'taxonomy' },
-        { id: 'techdebt', label: 'Tech Debt',           view: 'techdebt' }
+        { id: 'techdebt', label: 'Technology Debt',      view: 'techdebt' }
       ]
     },
     { id: 'transformation', label: 'Solutions',
