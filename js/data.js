@@ -40,24 +40,28 @@
     projectCapabilities:     () => Promise.resolve(E.projectCapabilities),
     projectApplications:     () => Promise.resolve(E.projectApplications),
     techDebt:                () => Promise.resolve(E.techDebt),
+    enterpriseStrategies:    () => Promise.resolve(E.enterpriseStrategies),
+    strategicInitiatives:    () => Promise.resolve(E.strategicInitiatives),
 
     // Convenience: bulk load
     async loadAll() {
       const [
         domains, capabilities, applications, capabilityApplications,
         capabilityMaturity, taxonomySegments, taxonomyServices, technologies,
-        projects, projectCapabilities, projectApplications, techDebt
+        projects, projectCapabilities, projectApplications, techDebt,
+        enterpriseStrategies, strategicInitiatives
       ] = await Promise.all([
         this.domains(), this.capabilities(), this.applications(),
         this.capabilityApplications(), this.capabilityMaturity(),
         this.taxonomySegments(), this.taxonomyServices(), this.technologies(),
         this.projects(), this.projectCapabilities(), this.projectApplications(),
-        this.techDebt()
+        this.techDebt(), this.enterpriseStrategies(), this.strategicInitiatives()
       ]);
       return {
         domains, capabilities, applications, capabilityApplications,
         capabilityMaturity, taxonomySegments, taxonomyServices, technologies,
-        projects, projectCapabilities, projectApplications, techDebt
+        projects, projectCapabilities, projectApplications, techDebt,
+        enterpriseStrategies, strategicInitiatives
       };
     }
   };

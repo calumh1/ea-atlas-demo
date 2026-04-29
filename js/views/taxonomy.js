@@ -12,10 +12,6 @@
 
     host.innerHTML = `
       <div class="view-header">
-        <div>
-          <h1 class="view-title">Technology Taxonomy</h1>
-          <p class="view-subtitle">Liberty IT Taxonomy v2.1 · ${cache.taxonomyServices.length} services · ${cache.technologies.length} standards</p>
-        </div>
         <div class="toolbar">
           <input type="search" id="tax-search" placeholder="Search services or technologies…" style="min-width:260px">
         </div>

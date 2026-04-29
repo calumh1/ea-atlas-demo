@@ -60,13 +60,13 @@ window.EmbeddedData = {
   {
     "id": 8,
     "title": "Enterprise & Governance",
-    "type": "Core",
+    "type": "Supporting",
     "sortOrder": 8,
     "description": "Corporate strategy, governance, risk, compliance, and legal functions."
   },
   {
     "id": 9,
-    "title": "HSE",
+    "title": "Health, Safety & Environment",
     "type": "Supporting",
     "sortOrder": 9,
     "description": "Health, safety, and environmental management across the enterprise."
@@ -329,21 +329,21 @@ window.EmbeddedData = {
   {
     "id": 32,
     "title": "Safety Management",
-    "domain": "HSE",
+    "domain": "Health, Safety & Environment",
     "sortOrder": 1,
     "description": "Policies, procedures, and systems for workplace safety."
   },
   {
     "id": 33,
     "title": "Incident & Hazard Management",
-    "domain": "HSE",
+    "domain": "Health, Safety & Environment",
     "sortOrder": 2,
     "description": "Reporting, investigation, and resolution of safety incidents."
   },
   {
     "id": 34,
     "title": "Environmental Management",
-    "domain": "HSE",
+    "domain": "Health, Safety & Environment",
     "sortOrder": 3,
     "description": "Environmental compliance, monitoring, and sustainability programmes."
   },
@@ -4151,5 +4151,50 @@ window.EmbeddedData = {
     "dateLogged": "2025-11-04",
     "status": "Planned"
   }
-]
+],
+
+  enterpriseStrategies: [
+  {
+    "id": 1,
+    "title": "Reduce Costs",
+    "description": "Drive operational efficiency and cost discipline across the enterprise to improve financial performance and fund strategic investment.",
+    "owner": "CFO",
+    "status": "Active",
+    "sortOrder": 1,
+    "colour": "#7C4DFF"
+  },
+  {
+    "id": 2,
+    "title": "Improve Customer & Stakeholder Experience",
+    "description": "Deliver seamless, reliable experiences for customers, regulators, and partners across all touchpoints.",
+    "owner": "CCO",
+    "status": "Active",
+    "sortOrder": 2,
+    "colour": "#05CFFF"
+  },
+  {
+    "id": 3,
+    "title": "Improve Regulatory Outcomes",
+    "description": "Strengthen Liberty's regulatory positioning through proactive engagement, evidence-based filings, and compliance excellence.",
+    "owner": "CRO",
+    "status": "Active",
+    "sortOrder": 3,
+    "colour": "#71E023"
+  }
+  ],
+
+  strategicInitiatives: [
+  {
+    "id": 1,
+    "title": "Improve Customer Movements That Matter",
+    "description": "Focus on the key customer interactions — connections, outages, billing queries — that have the greatest impact on satisfaction and loyalty.",
+    "parentStrategyId": 2,
+    "owner": "",
+    "status": "Active",
+    "targetOutcome": "Measurable improvement in customer satisfaction scores for high-impact touchpoints.",
+    "targetDate": "",
+    "sortOrder": 1
+  }
+  ]
+
 };

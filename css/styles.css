@@ -74,7 +74,7 @@ a { color: var(--accent); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 24px;
+  padding: 8px 24px;
 }
 .brand { display: flex; align-items: center; gap: 14px; }
 .brand-logo { width: 44px; height: 44px; border-radius: 8px; background: white; padding: 2px; }
@@ -223,15 +223,16 @@ a { color: var(--accent); }
 }
 .bcm-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
 }
 .bcm-domain {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 12px;
+  padding: 8px;
   box-shadow: var(--shadow-1);
+  min-width: 0;
 }
 .bcm-domain-head {
   display: flex; align-items: center; justify-content: space-between;
@@ -239,7 +240,7 @@ a { color: var(--accent); }
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
-.bcm-domain-name { font-weight: 600; font-size: 13px; }
+.bcm-domain-name { font-weight: 600; font-size: 11.5px; }
 .bcm-domain-tag {
   font-size: 10px;
   text-transform: uppercase;
@@ -254,9 +255,9 @@ a { color: var(--accent); }
 .bcm-cap-list { display: flex; flex-direction: column; gap: 6px; }
 .bcm-cap {
   background: var(--hm-none);
-  padding: 8px 10px;
+  padding: 5px 7px;
   border-radius: 6px;
-  font-size: 12.5px;
+  font-size: 11.5px;
   cursor: pointer;
   border: 1px solid transparent;
   display: flex;
@@ -713,3 +714,145 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   color: var(--ink-3);
 }
 .env-tag strong { color: var(--liberty-purple); }
+
+/* =========================================================
+   Strategies view
+   ========================================================= */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.strategy-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.strategy-card-accent {
+  height: 5px;
+  background: var(--s-colour, var(--accent));
+}
+.strategy-card-body { padding: 16px; }
+.strategy-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.strategy-title { font-size: 15px; font-weight: 700; line-height: 1.3; }
+.strategy-badges { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+.s-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-2, #1e2030);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.s-badge--status { background: rgba(124,77,255,.15); color: var(--liberty-purple); }
+.strategy-desc {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+.strategy-initiatives { border-top: 1px solid var(--border); padding-top: 12px; }
+.strategy-init-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink-3);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.initiative-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 6px;
+}
+.initiative-item:last-child { margin-bottom: 0; }
+.initiative-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.initiative-title { font-size: 13px; font-weight: 600; }
+.initiative-badges { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+.initiative-outcome {
+  font-size: 12px;
+  color: var(--ink-2);
+  line-height: 1.45;
+  margin: 6px 0 0;
+}
+
+/* =========================================================
+   About / Home view
+   ========================================================= */
+.about-hero {
+  max-width: 760px;
+  margin: 0 0 36px;
+}
+.about-title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #a67cff 0%, #05cfff 55%, #71e023 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  margin: 0 0 4px;
+}
+.about-tagline {
+  font-size: 13px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin: 0 0 18px;
+}
+.about-intro {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin: 0;
+}
+.about-sections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.about-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.about-card-accent { height: 4px; }
+.about-card-body { padding: 16px; }
+.about-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.about-card-desc {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin: 0;
+}
+.about-footer-note {
+  font-size: 12px;
+  color: var(--ink-3);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}

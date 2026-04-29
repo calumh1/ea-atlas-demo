@@ -12,10 +12,6 @@
 
     host.innerHTML = `
       <div class="view-header">
-        <div>
-          <h1 class="view-title">Roadmap</h1>
-          <p class="view-subtitle">Quarterly view · projects, capability impact, and end-of-life markers</p>
-        </div>
         <div class="toolbar">
           <div class="btn-group" id="rm-swim">
             <button class="btn active" data-s="program">By programme</button>

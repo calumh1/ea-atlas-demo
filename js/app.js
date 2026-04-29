@@ -3,23 +3,36 @@
    ========================================================= */
 (function () {
   const NAV = [
-    { id: 'architecture', label: 'Architecture',
+    { id: 'home', label: 'Home',
       sections: [
-        { id: 'bcm', label: 'BCM', view: 'bcm' }
-      ]
-    },
-    { id: 'technology', label: 'Technology',
-      sections: [
-        { id: 'applications', label: 'Applications', view: 'applications' },
-        { id: 'taxonomy',     label: 'Technology Taxonomy', view: 'taxonomy' }
-      ]
-    },
-    { id: 'landscapes', label: 'Landscapes',
-      sections: [
-        { id: 'techdebt', label: 'Tech Debt', view: 'techdebt' }
+        { id: 'about', label: 'About', view: 'about' }
       ]
     },
     { id: 'strategies', label: 'Strategies',
+      sections: [
+        { id: 'enterprise-strategies', label: 'Enterprise Strategies', view: 'strategies' }
+      ]
+    },
+    { id: 'business-architecture', label: 'Business Architecture',
+      sections: [
+        { id: 'bcm_struct',      label: 'Business Capability Model', view: 'bcm_struct' },
+        { id: 'bcm_application', label: 'Applications View',         view: 'bcm_application' },
+        { id: 'bcm_eol',         label: 'End of Life View',          view: 'bcm_eol' },
+        { id: 'bcm_maturity',    label: 'Maturity View',             view: 'bcm_maturity' }
+      ]
+    },
+    { id: 'application-architecture', label: 'Application Architecture',
+      sections: [
+        { id: 'applications', label: 'Application Inventory', view: 'applications' }
+      ]
+    },
+    { id: 'technology-architecture', label: 'Technology Architecture',
+      sections: [
+        { id: 'taxonomy', label: 'Technology Taxonomy', view: 'taxonomy' },
+        { id: 'techdebt', label: 'Tech Debt',           view: 'techdebt' }
+      ]
+    },
+    { id: 'transformation', label: 'Solutions',
       sections: [
         { id: 'projects', label: 'Projects', view: 'projects' },
         { id: 'roadmap',  label: 'Roadmap',  view: 'roadmap' }
@@ -27,7 +40,7 @@
     }
   ];
 
-  const state = { primary: 'architecture', secondary: 'bcm' };
+  const state = { primary: 'home', secondary: 'about' };
   const viewEl = document.getElementById('view');
 
   function render() {
@@ -56,6 +69,7 @@
     const el = document.getElementById('secondary-nav');
     el.innerHTML = '';
     const group = NAV.find(g => g.id === state.primary);
+    if (group.sections.length <= 1) return;
     group.sections.forEach(sec => {
       const btn = document.createElement('button');
       btn.textContent = sec.label;

@@ -17,43 +17,21 @@
   };
   let cache = null;
 
-  async function render(host) {
+  async function render(host, mode) {
     cache = cache || await window.atlasData.loadAll();
+    state.mode = mode || 'bcm';
     state.selectedCapId = null;
 
     host.innerHTML = `
-      <div class="view-header">
-        <div>
-          <h1 class="view-title">Business Capability Model</h1>
-          <p class="view-subtitle">Liberty Utilities · 14 domains · 56 capabilities</p>
-        </div>
-        <div class="toolbar">
-          <div class="btn-group" id="bcm-modes"></div>
-        </div>
-      </div>
       <div id="bcm-stats" class="stats-bar"></div>
-      <div id="bcm-legend" class="legend"></div>
       <div id="bcm-body"></div>
+      <div id="bcm-legend" class="legend"></div>
     `;
 
-    renderModeSwitcher(host);
     renderAll(host);
   }
 
-  function renderModeSwitcher(host) {
-    const el = host.querySelector('#bcm-modes');
-    el.innerHTML = '';
-    MODES.forEach(m => {
-      const b = document.createElement('button');
-      b.className = 'btn' + (m.id === state.mode ? ' active' : '');
-      b.textContent = m.label;
-      b.onclick = () => { state.mode = m.id; renderAll(host); };
-      el.appendChild(b);
-    });
-  }
-
   function renderAll(host) {
-    renderModeSwitcher(host);
     renderStats(host);
     renderLegend(host);
     renderBody(host);
@@ -291,5 +269,8 @@
       ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
   }
 
-  window.atlasViews.bcm = { render };
+  window.atlasViews.bcm_struct      = { render: h => render(h, 'bcm') };
+  window.atlasViews.bcm_application = { render: h => render(h, 'application') };
+  window.atlasViews.bcm_eol         = { render: h => render(h, 'eol') };
+  window.atlasViews.bcm_maturity    = { render: h => render(h, 'maturity') };
 })();

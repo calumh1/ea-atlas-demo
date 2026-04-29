@@ -12,10 +12,6 @@
 
     host.innerHTML = `
       <div class="view-header">
-        <div>
-          <h1 class="view-title">Applications</h1>
-          <p class="view-subtitle">Application registry · ${cache.applications.length} applications</p>
-        </div>
         <div class="toolbar">
           <input type="search" id="app-search" placeholder="Search applications, vendors…">
           <select id="app-tier">

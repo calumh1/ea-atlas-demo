@@ -15,10 +15,6 @@
 
     host.innerHTML = `
       <div class="view-header">
-        <div>
-          <h1 class="view-title">Projects</h1>
-          <p class="view-subtitle">Investment portfolio · ${cache.projects.length} projects</p>
-        </div>
         <div class="toolbar">
           <input type="search" id="proj-search" placeholder="Search projects, sponsors…">
           <select id="proj-status">
