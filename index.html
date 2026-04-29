@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATLAS — Architecture, Technology, Landscape & Strategy</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="brand">
+    <img src="assets/ea_atlas_logo.png" alt="" class="brand-logo">
+    <div class="brand-text">
+      <div class="brand-title">ATLAS</div>
+      <div class="brand-sub">Architecture · Technology · Landscape · Strategy</div>
+    </div>
+  </div>
+  <div class="brand-tenant">Liberty Utilities</div>
+</header>
+
+<div class="brand-bar"></div>
+
+<nav class="primary-nav" id="primary-nav"></nav>
+<nav class="secondary-nav" id="secondary-nav"></nav>
+
+<main id="view" class="view"></main>
+
+<footer class="app-footer">
+  <span>ATLAS prototype · v0.1 · running locally with embedded data</span>
+  <span class="env-tag">data source: <strong id="data-source">embedded</strong></span>
+</footer>
+
+<!-- Data layer: swap data-embedded.js for a SharePoint REST implementation later -->
+<script src="js/data-embedded.js"></script>
+<script src="js/data.js"></script>
+
+<!-- Views -->
+<script src="js/views/bcm.js"></script>
+<script src="js/views/applications.js"></script>
+<script src="js/views/taxonomy.js"></script>
+<script src="js/views/techdebt.js"></script>
+<script src="js/views/projects.js"></script>
+<script src="js/views/roadmap.js"></script>
+
+<!-- App shell + router -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
