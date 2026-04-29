@@ -28,8 +28,11 @@
     },
     { id: 'technology-architecture', label: 'Technology Architecture',
       sections: [
-        { id: 'taxonomy', label: 'Technology Taxonomy', view: 'taxonomy' },
-        { id: 'techdebt', label: 'Technology Debt',      view: 'techdebt' }
+        { id: 'taxonomy',        label: 'Technology Taxonomy',       view: 'taxonomy'        },
+        { id: 'standards',       label: 'Standards',                 view: 'standards'       },
+        { id: 'solarchitecture', label: 'Solution Architecture',     view: 'solarchitecture' },
+        { id: 'configstandards', label: 'Configuration Standards',   view: 'configstandards' },
+        { id: 'techdebt',        label: 'Technology Debt',           view: 'techdebt'        }
       ]
     },
     { id: 'transformation', label: 'Solutions',

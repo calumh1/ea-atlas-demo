@@ -533,6 +533,29 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 }
 .tax-service.active .tax-service-count { background: rgba(255,255,255,.3); }
 
+.tax-service--linked {
+  background: #e8f9d0;
+  border-color: #71E023;
+  color: #2a5000;
+}
+.tax-service--linked:hover {
+  background: #d6f5b8;
+  border-color: #5ab81a;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-1);
+}
+.tax-service--unlinked {
+  background: #fde8ef;
+  border-color: #FF3880;
+  color: #7a0030;
+  cursor: default;
+}
+.tax-service--unlinked:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #FF3880;
+}
+
 .tax-segment--end-user-device { background: var(--tax-enduser-bg);  border-color: var(--tax-enduser-bd); }
 .tax-segment--application-delivery,
 .tax-segment--automation-and-ai,

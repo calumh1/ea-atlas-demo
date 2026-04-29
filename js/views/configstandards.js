@@ -1,5 +1,5 @@
 /* =========================================================
-   ATLAS · Technology Taxonomy — pure structural view
+   ATLAS · Configuration Standards coverage heatmap
    ========================================================= */
 (function () {
   window.atlasViews = window.atlasViews || {};
@@ -8,12 +8,32 @@
 
   async function render(host) {
     cache = cache || await window.atlasData.loadAll();
-    host.innerHTML = `<div class="taxonomy-board" id="tax-board"></div>`;
+
+    host.innerHTML = `
+      <div id="cs-stats" class="stats-bar"></div>
+      <div class="taxonomy-board" id="cs-board"></div>
+    `;
+
+    renderStats();
     renderBoard();
   }
 
+  function renderStats() {
+    const svcs   = cache.taxonomyServices;
+    const linked = svcs.filter(s => s.ConfigStandardsURL).length;
+    document.getElementById('cs-stats').innerHTML = [
+      ['Services',       svcs.length,              ''],
+      ['With standard',  linked,                    ''],
+      ['Missing',        svcs.length - linked,      ''],
+    ].map(([l, v, s]) => `<div class="stat-card">
+      <div class="stat-label">${l}</div>
+      <div class="stat-value">${v}</div>
+      <div class="stat-sub">${s || '&nbsp;'}</div>
+    </div>`).join('');
+  }
+
   function renderBoard() {
-    const board    = document.getElementById('tax-board');
+    const board    = document.getElementById('cs-board');
     const segs     = cache.taxonomySegments.slice().sort((a, b) => a.SortOrder - b.SortOrder);
     const services = cache.taxonomyServices;
 
@@ -34,7 +54,13 @@
         <div class="tax-segment tax-segment--${slugSeg(seg.Title)}">
           <div class="tax-segment-title">${seg.Title.replace(/ Segment$/, '')}</div>
           <div class="tax-services">
-            ${svcs.map(svc => `<button class="tax-service" data-svc="${esc(svc.Title)}">${esc(svc.Title)}</button>`).join('')}
+            ${svcs.map(svc => {
+              const url = svc.ConfigStandardsURL;
+              return `<button class="tax-service tax-service--${url ? 'linked' : 'unlinked'}"
+                              data-url="${esc(url || '')}">
+                        ${esc(svc.Title)}
+                      </button>`;
+            }).join('')}
           </div>
         </div>`;
     };
@@ -65,17 +91,9 @@
       ${groupedByHint['full-width-bottom'].map(s => `<div class="layout-full-width-bottom">${segHtml(s)}</div>`).join('')}
     `;
 
-    board.querySelectorAll('.tax-service').forEach(el => {
-      el.onclick = () => openServicePanel(el.dataset.svc);
+    board.querySelectorAll('.tax-service--linked').forEach(el => {
+      el.onclick = () => window.open(el.dataset.url, '_blank');
     });
-  }
-
-  function openServicePanel(svcTitle) {
-    const svc  = cache.taxonomyServices.find(s => s.Title === svcTitle);
-    const body = svc?.Description
-      ? `<div class="detail-prose">${esc(svc.Description)}</div>`
-      : `<div class="detail-prose" style="color:var(--ink-3)">No description available.</div>`;
-    window.atlasUI.openPanel({ eyebrow: 'Service', title: svcTitle, body });
   }
 
   function esc(s) {
@@ -83,5 +101,5 @@
       ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
   }
 
-  window.atlasViews.taxonomy = { render };
+  window.atlasViews.configstandards = { render };
 })();
