@@ -67,11 +67,18 @@
     };
     segs.forEach(s => groupedByHint[s.LayoutHint]?.push(s));
 
+    const slugSeg = (title) => title
+      .replace(/Segment$/i, '')
+      .trim().toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
     const segHtml = (seg) => {
       const svcs = services.filter(s => s.Segment === seg.Title)
                            .sort((a, b) => a.SortOrder - b.SortOrder);
       return `
-        <div class="tax-segment">
+        <div class="tax-segment tax-segment--${slugSeg(seg.Title)}">
           <div class="tax-segment-title">${seg.Title.replace(/ Segment$/, '')}</div>
           <div class="tax-services">
             ${svcs.map(svc => serviceTile(svc)).join('')}
@@ -82,23 +89,21 @@
     board.innerHTML = `
       ${groupedByHint['full-width-top'].map(s => `<div class="layout-full-width-top">${segHtml(s)}</div>`).join('')}
 
-      <div class="layout-app-row" style="grid-column: 1 / -1">
+      <div style="grid-column: 1 / -1; grid-row: 2">
         <div class="tax-row-stack tax-app-row">
           ${groupedByHint['app-row'].map(s => segHtml(s)).join('')}
         </div>
       </div>
 
-      ${groupedByHint['main-left-tall'].map(s => `<div class="layout-main-left-tall">${segHtml(s)}</div>`).join('')}
-
-      <div class="layout-main-center">
-        <div class="tax-center-stack">
+      <div style="grid-column: 1 / -1; grid-row: 3">
+        <div class="tax-mid-row">
+          ${groupedByHint['main-left-tall'].map(s => segHtml(s)).join('')}
           ${groupedByHint['main-center'].map(s => segHtml(s)).join('')}
+          ${groupedByHint['main-right-tall'].map(s => segHtml(s)).join('')}
         </div>
       </div>
 
-      ${groupedByHint['main-right-tall'].map(s => `<div class="layout-main-right-tall">${segHtml(s)}</div>`).join('')}
-
-      <div class="layout-infra-row" style="grid-column: 1 / -1">
+      <div style="grid-column: 1 / -1; grid-row: 4">
         <div class="tax-row-stack tax-infra-row">
           ${groupedByHint['infra-row'].map(s => segHtml(s)).join('')}
         </div>

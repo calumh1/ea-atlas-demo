@@ -452,6 +452,18 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 /* =========================================================
    Technology Taxonomy spatial layout
    ========================================================= */
+:root {
+  --tax-enduser-bg:    #E1DEF2;  --tax-enduser-bd:    #C2BCE0;
+  --tax-approw-bg:     #E8E4F5;  --tax-approw-bd:     #CCC5E6;
+  --tax-ops-bg:        #F2EAC9;  --tax-ops-bd:        #DDCFA0;
+  --tax-services-bg:   #DDECCF;  --tax-services-bd:   #BCD5A6;
+  --tax-data-bg:       #D2E6E0;  --tax-data-bd:       #A6CCC2;
+  --tax-security-bg:   #F4DEC2;  --tax-security-bd:   #DCBE8E;
+  --tax-infra-bg:      #DCE7C5;  --tax-infra-bd:      #BAD09A;
+  --tax-network-bg:    #F1D4DD;  --tax-network-bd:    #DBABBA;
+  --tax-hosting-bg:    #DEDEDE;  --tax-hosting-bd:    #BABABA;
+}
+
 .taxonomy-board {
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
@@ -463,49 +475,82 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   padding: 12px;
   box-shadow: var(--shadow-1);
 }
+
 .tax-segment {
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 10px;
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .tax-segment-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--ink-3);
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 8px;
+  color: #1a1a1a;
+  text-align: center;
+  letter-spacing: 0;
+  text-transform: none;
 }
-.tax-services { display: flex; flex-wrap: wrap; gap: 6px; }
+.tax-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 6px;
+  flex: 1;
+}
 .tax-service {
   font-size: 12px;
-  padding: 6px 10px;
+  padding: 8px 8px;
   background: white;
-  border: 1px solid var(--border-strong);
-  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,.18);
+  border-radius: 4px;
   cursor: pointer;
   color: var(--ink);
   transition: all .12s ease;
-  position: relative;
+  text-align: center;
   font-weight: 500;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
 }
-.tax-service:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-1); }
+.tax-service:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-1);
+}
 .tax-service.active { background: var(--accent); color: white; border-color: var(--accent); }
-.tax-service.search-hit {
-  outline: 2px solid var(--liberty-yellow);
-  outline-offset: -2px;
-}
+.tax-service.search-hit { outline: 2px solid var(--liberty-yellow); outline-offset: -2px; }
 .tax-service-count {
-  display: inline-block;
   font-size: 10px;
   font-weight: 700;
   background: rgba(0,0,0,.1);
   padding: 0 5px;
   border-radius: 8px;
-  margin-left: 6px;
 }
 .tax-service.active .tax-service-count { background: rgba(255,255,255,.3); }
+
+.tax-segment--end-user-device { background: var(--tax-enduser-bg);  border-color: var(--tax-enduser-bd); }
+.tax-segment--application-delivery,
+.tax-segment--automation-and-ai,
+.tax-segment--application-lifecycle-management
+                              { background: var(--tax-approw-bg);   border-color: var(--tax-approw-bd); }
+.tax-segment--operations-management
+                              { background: var(--tax-ops-bg);      border-color: var(--tax-ops-bd); }
+.tax-segment--identity,
+.tax-segment--collaboration,
+.tax-segment--integration     { background: var(--tax-services-bg); border-color: var(--tax-services-bd); }
+.tax-segment--data,
+.tax-segment--dr              { background: var(--tax-data-bg);     border-color: var(--tax-data-bd); }
+.tax-segment--security        { background: var(--tax-security-bg); border-color: var(--tax-security-bd); }
+.tax-segment--infrastructure-services,
+.tax-segment--compute,
+.tax-segment--storage         { background: var(--tax-infra-bg);    border-color: var(--tax-infra-bd); }
+.tax-segment--network         { background: var(--tax-network-bg);  border-color: var(--tax-network-bd); }
+.tax-segment--hosting         { background: var(--tax-hosting-bg);  border-color: var(--tax-hosting-bd); }
 
 .layout-full-width-top    { grid-column: 1 / -1; grid-row: 1; }
 .layout-app-row           { grid-row: 2; }
@@ -517,8 +562,14 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 
 .tax-center-stack { display: flex; flex-direction: column; gap: 10px; }
 .tax-row-stack    { display: grid; gap: 10px; }
-.tax-app-row      { grid-template-columns: repeat(3, 1fr); }
-.tax-infra-row    { grid-template-columns: repeat(4, 1fr); }
+.tax-app-row      { grid-template-columns: 2fr 1fr 1fr; }
+.tax-infra-row    { grid-template-columns: 2.5fr 1fr 1fr 2.5fr; }
+.tax-mid-row {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1.6fr 0.9fr 1.4fr 0.9fr 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
 
 /* =========================================================
    Tech debt list
