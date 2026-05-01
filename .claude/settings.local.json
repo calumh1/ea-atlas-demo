@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\acmin\\\\dev\\\\ea_atlas\\\\data\" | Select-Object Name, @{n='KB';e={[math]::Round\\($_.Length/1KB,1\\)}})"
+    ]
+  }
+}

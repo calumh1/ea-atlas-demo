@@ -26,12 +26,20 @@
 <main id="view" class="view"></main>
 
 <footer class="app-footer">
-  <span>ATLAS prototype · v0.1 · running locally with embedded data</span>
-  <span class="env-tag">data source: <strong id="data-source">embedded</strong></span>
+  <span>ATLAS prototype · v0.1 · running locally with local files</span>
+  <span class="env-tag">data source: <strong id="data-source">local files</strong></span>
 </footer>
 
-<!-- Data layer: swap data-embedded.js for a SharePoint REST implementation later -->
-<script src="js/data-embedded.js"></script>
+<!-- Data files: one per entity, loaded before the data layer -->
+<script src="data/domains.js"></script>
+<script src="data/capabilities.js"></script>
+<script src="data/applications.js"></script>
+<script src="data/taxonomy.js"></script>
+<script src="data/technologies.js"></script>
+<script src="data/projects.js"></script>
+<script src="data/tech-debt.js"></script>
+<script src="data/strategies.js"></script>
+<!-- Data layer abstraction — swap build('local') to build('sharepoint') to migrate -->
 <script src="js/data.js"></script>
 
 <!-- Views -->
