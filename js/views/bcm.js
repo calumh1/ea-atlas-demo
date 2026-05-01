@@ -91,8 +91,12 @@
   function renderLegend(host) {
     const el = host.querySelector('#bcm-legend');
     if (state.mode === 'bcm') {
-      el.innerHTML = `<span><span class="legend-swatch" style="background:#efe7ff"></span>Core domain</span>
-                     <span><span class="legend-swatch" style="background:#d8f7ff"></span>Supporting domain</span>`;
+      el.innerHTML = `
+        <span><span class="legend-swatch" style="background:#efe7ff"></span>Core domain</span>
+        <span><span class="legend-swatch" style="background:#d8f7ff"></span>Supporting domain</span>
+        <span class="legend-divider"></span>
+        <span><span class="legend-swatch" style="background:#e8f9e0"></span>Fully Shared</span>
+        <span><span class="legend-swatch" style="background:#fff3e0"></span>Commodity Specific</span>`;
     } else if (state.mode === 'application' || state.mode === 'eol') {
       el.innerHTML = `
         <span><span class="legend-swatch" style="background:var(--hm-none)"></span>None</span>
@@ -136,11 +140,16 @@
 
   function domainCard(d, capabilities) {
     const caps = capabilities.filter(c => c.domain === d.title).sort((a, b) => a.sortOrder - b.sortOrder);
+    const sharedType = d.sharedType || 'fully-shared';
+    const sharedLabel = sharedType === 'commodity-specific' ? 'Commodity' : 'Shared';
     return `
       <div class="bcm-domain">
         <div class="bcm-domain-head">
           <div class="bcm-domain-name">${d.title}</div>
-          <div class="bcm-domain-tag ${d.type.toLowerCase()}">${d.type}</div>
+          <div class="bcm-domain-tags">
+            <div class="bcm-domain-tag ${d.type.toLowerCase()}">${d.type}</div>
+            <div class="bcm-domain-tag ${sharedType}">${sharedLabel}</div>
+          </div>
         </div>
         <div class="bcm-cap-list">
           ${caps.map(c => capChip(c)).join('')}

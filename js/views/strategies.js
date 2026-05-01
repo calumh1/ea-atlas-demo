@@ -6,11 +6,26 @@
 
   async function render(host) {
     const { enterpriseStrategies, strategicInitiatives } = await window.atlasData.loadAll();
-    const sorted = [...enterpriseStrategies].sort((a, b) => a.sortOrder - b.sortOrder);
+
+    const vision  = enterpriseStrategies.find(s => s.parentId == null);
+    const pillars = enterpriseStrategies
+      .filter(s => s.parentId != null)
+      .sort((a, b) => a.sortOrder - b.sortOrder);
 
     host.innerHTML = `
+      ${vision ? visionBanner(vision) : ''}
       <div class="strategy-grid">
-        ${sorted.map(s => strategyCard(s, strategicInitiatives)).join('')}
+        ${pillars.map(s => strategyCard(s, strategicInitiatives)).join('')}
+      </div>
+    `;
+  }
+
+  function visionBanner(v) {
+    return `
+      <div class="strategy-vision" style="--s-colour:${esc(v.colour)}">
+        <div class="strategy-vision-eyebrow">Strategic Vision</div>
+        <div class="strategy-vision-title">${esc(v.title)}</div>
+        ${v.description ? `<p class="strategy-vision-desc">${esc(v.description)}</p>` : ''}
       </div>
     `;
   }
