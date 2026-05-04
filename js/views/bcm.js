@@ -23,6 +23,10 @@
     state.selectedCapId = null;
 
     host.innerHTML = `
+      ${state.mode === 'maturity' ? `
+      <div class="demo-notice">
+        Maturity scores shown here are illustrative dummy data for demonstration purposes only and do not reflect assessed capability maturity.
+      </div>` : ''}
       <div id="bcm-stats" class="stats-bar"></div>
       <div id="bcm-body"></div>
       <div id="bcm-legend" class="legend"></div>

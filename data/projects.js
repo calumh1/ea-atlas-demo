@@ -10,7 +10,7 @@ window.atlasData.projects = [
     "category": "Improvement - SAP Enterprise Systems",
     "executiveSponsor": "Colin Penny",
     "projectOwner": "Dan Belson",
-    "startDate": "2025-04-01",
+    "startDate": "2026-08-01",
     "endDate": "2026-09-30",
     "description": "SAP S/4 is in extended support until 2026; in-place upgrade with Capgemini, bundled with optimisations.",
     "totalCpex": 4300000,
@@ -40,25 +40,6 @@ window.atlasData.projects = [
     "carryingOver": true
   },
   {
-    "id": 3,
-    "title": "ITSM (ServiceNow) Phase 1",
-    "program": "Operations",
-    "priority": "Tier 1",
-    "status": "In-Flight",
-    "category": "Improvement - Sustainment/Asset Replacement",
-    "executiveSponsor": "Colin Penny",
-    "projectOwner": "Dan Belson",
-    "startDate": "2025-03-01",
-    "endDate": "2025-11-30",
-    "description": "Replace Service Hub (IFS Assyst) with ServiceNow as primary ITSM platform.",
-    "totalCpex": 150000,
-    "cost2026it": 150000,
-    "opexImpact": "No change",
-    "roi": "Neutral",
-    "comments": "Go-live moved to Nov 2025; 2026 spend reduced from $324K to $150K.",
-    "carryingOver": true
-  },
-  {
     "id": 4,
     "title": "IVR Upgrade",
     "program": "Network",
@@ -79,14 +60,14 @@ window.atlasData.projects = [
   },
   {
     "id": 5,
-    "title": "ZENITH â€” Datacenter Consolidation",
+    "title": "ZENITH - Datacenter Consolidation",
     "program": "Zenith",
     "priority": "Tier 1",
     "status": "Proposed",
     "category": "Improvement - Corporate Initiative",
     "executiveSponsor": "Colin Penny",
     "projectOwner": "Dan Belson",
-    "startDate": "2026-01-01",
+    "startDate": "2026-06-01",
     "endDate": "2027-12-31",
     "description": "Consolidate datacentres to reduce colo, hardware, and duplicate capability spend; exit IBM Washington/Dallas and Joplin facilities.",
     "totalCpex": 4500000,
@@ -98,14 +79,14 @@ window.atlasData.projects = [
   },
   {
     "id": 6,
-    "title": "ZENITH â€” GIS Cost Savings",
+    "title": "ZENITH - GIS Cost Savings",
     "program": "Zenith",
     "priority": "Tier 1",
     "status": "Proposed",
     "category": "Improvement - Corporate Initiative",
     "executiveSponsor": "Colin Penny",
     "projectOwner": "Dan Belson",
-    "startDate": "2026-02-01",
+    "startDate": "2026-05-01",
     "endDate": "2026-12-31",
     "description": "Replace Citrix VDI with AVD/laptops for GIS users, right-size Azure VMs and databases, reduce vendor support, review ESRI licensing.",
     "totalCpex": 300000,
@@ -136,60 +117,22 @@ window.atlasData.projects = [
   },
   {
     "id": 8,
-    "title": "Application Decommissioning Programme",
-    "program": "Server",
+    "title": "Zenith - Application Rationalization",
+    "program": "Zenith",
     "priority": "Tier 1",
-    "status": "Withdrawn",
-    "category": "Improvement - Sustainment/Asset Replacement",
+    "status": "Proposed",
+    "category": "Improvement - Corporate Initiative",
     "executiveSponsor": "Colin Penny",
     "projectOwner": "Dan Belson",
-    "startDate": "2026-01-01",
+    "startDate": "2026-04-14",
     "endDate": "2026-12-31",
-    "description": "Continue 2025 archival/decommissioning work to retire duplicative or redundant applications. Capex+OpEx blend.",
+    "description": "Identify and retire duplicative or redundant applications as part of the Zenith programme scope.",
     "totalCpex": 100000,
     "cost2026it": 100000,
     "opexImpact": "No change",
     "roi": "Neutral",
-    "comments": "Withdrawn for now; may be folded into Zenith scope.",
-    "carryingOver": false
-  },
-  {
-    "id": 9,
-    "title": "Windows 11 Endpoint Migration",
-    "program": "End User",
-    "priority": "Tier 2",
-    "status": "In-Flight",
-    "category": "Improvement - Sustainment/Asset Replacement",
-    "executiveSponsor": "Colin Penny",
-    "projectOwner": "Aldo Peirano",
-    "startDate": "2025-10-01",
-    "endDate": "2026-12-31",
-    "description": "Migrate all managed devices from Windows 10 Pro to Windows 11 Enterprise ahead of W10 end of support (Oct 2025).",
-    "totalCpex": 400000,
-    "cost2026it": 400000,
-    "opexImpact": "No change",
-    "roi": "Neutral",
-    "comments": "Aligned with Intune co-management transition.",
-    "carryingOver": true
-  },
-  {
-    "id": 10,
-    "title": "Intune Co-Management Rollout",
-    "program": "End User",
-    "priority": "Tier 2",
-    "status": "In-Flight",
-    "category": "Improvement - Sustainment/Asset Replacement",
-    "executiveSponsor": "Colin Penny",
-    "projectOwner": "Aldo Peirano",
-    "startDate": "2025-09-01",
-    "endDate": "2026-09-30",
-    "description": "Migrate SCCM-managed estate to Intune co-management for modern endpoint policy.",
-    "totalCpex": 250000,
-    "cost2026it": 250000,
-    "opexImpact": "Decrease",
-    "roi": "Positive",
     "comments": "",
-    "carryingOver": true
+    "carryingOver": false
   },
   {
     "id": 11,
@@ -200,8 +143,8 @@ window.atlasData.projects = [
     "category": "Improvement - Sustainment/Asset Replacement",
     "executiveSponsor": "Colin Penny",
     "projectOwner": "Dan Belson",
-    "startDate": "2026-01-01",
-    "endDate": "2026-06-30",
+    "startDate": "2026-07-01",
+    "endDate": "2026-12-31",
     "description": "Retire residual TFS and self-hosted git servers in favour of GitHub Enterprise Cloud.",
     "totalCpex": 80000,
     "cost2026it": 80000,
@@ -211,23 +154,23 @@ window.atlasData.projects = [
     "carryingOver": false
   },
   {
-    "id": 12,
-    "title": "Sentinel One EDR Completion",
-    "program": "Security",
-    "priority": "Tier 1",
-    "status": "In-Flight",
-    "category": "Improvement - Sustainment/Asset Replacement",
+    "id": 13,
+    "title": "Strategic Vendor Onboarding",
+    "program": "Applications",
+    "priority": "Tier 2",
+    "status": "Proposed",
+    "category": "Improvement - Corporate Initiative",
     "executiveSponsor": "Colin Penny",
-    "projectOwner": "Matthew Macedo",
-    "startDate": "2025-06-01",
-    "endDate": "2026-03-31",
-    "description": "Complete decommissioning of Cisco Secure Endpoint and McAfee ENS in favour of Sentinel One.",
-    "totalCpex": 120000,
-    "cost2026it": 120000,
-    "opexImpact": "Decrease",
+    "projectOwner": "Dan Belson",
+    "startDate": "2026-05-15",
+    "endDate": "2026-10-15",
+    "description": "Structured onboarding of strategic vendors to align with Liberty's technology standards and governance requirements.",
+    "totalCpex": 0,
+    "cost2026it": 0,
+    "opexImpact": "No change",
     "roi": "Neutral",
     "comments": "",
-    "carryingOver": true
+    "carryingOver": false
   }
 ];
 
@@ -279,24 +222,6 @@ window.atlasData.projectCapabilities = [
     "projectId": 2,
     "capabilityId": 50,
     "impactType": "Depends On"
-  },
-  {
-    "id": 9,
-    "projectId": 3,
-    "capabilityId": 53,
-    "impactType": "Enables"
-  },
-  {
-    "id": 10,
-    "projectId": 3,
-    "capabilityId": 56,
-    "impactType": "Enhances"
-  },
-  {
-    "id": 11,
-    "projectId": 3,
-    "capabilityId": 56,
-    "impactType": "Enhances"
   },
   {
     "id": 12,
@@ -377,30 +302,6 @@ window.atlasData.projectCapabilities = [
     "impactType": "Retires"
   },
   {
-    "id": 25,
-    "projectId": 9,
-    "capabilityId": 56,
-    "impactType": "Enables"
-  },
-  {
-    "id": 26,
-    "projectId": 9,
-    "capabilityId": 56,
-    "impactType": "Enhances"
-  },
-  {
-    "id": 27,
-    "projectId": 10,
-    "capabilityId": 56,
-    "impactType": "Enables"
-  },
-  {
-    "id": 28,
-    "projectId": 10,
-    "capabilityId": 56,
-    "impactType": "Enhances"
-  },
-  {
     "id": 29,
     "projectId": 11,
     "capabilityId": 54,
@@ -410,18 +311,6 @@ window.atlasData.projectCapabilities = [
     "id": 30,
     "projectId": 11,
     "capabilityId": 53,
-    "impactType": "Enhances"
-  },
-  {
-    "id": 31,
-    "projectId": 12,
-    "capabilityId": 56,
-    "impactType": "Enables"
-  },
-  {
-    "id": 32,
-    "projectId": 12,
-    "capabilityId": 56,
     "impactType": "Enhances"
   }
 ];

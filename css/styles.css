@@ -769,6 +769,16 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 /* =========================================================
    Stub sections
    ========================================================= */
+.demo-notice {
+  background: rgba(254, 221, 0, 0.10);
+  border: 1px solid rgba(254, 221, 0, 0.45);
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #b8960a;
+  margin-bottom: 16px;
+}
+
 .stub-banner {
   background: linear-gradient(90deg, rgba(124,77,255,.06) 0%, rgba(5,207,255,.06) 100%);
   border: 1px dashed var(--border-strong);
