@@ -392,6 +392,13 @@ window.atlasData.capabilities = [
     "domain": "Digital Technology",
     "sortOrder": 4,
     "description": "End-user technology support including service desk, device management, and productivity service delivery."
+  },
+  {
+    "id": 57,
+    "title": "Cyber Security Operations",
+    "domain": "Digital Technology",
+    "sortOrder": 5,
+    "description": "Security monitoring, threat detection, incident response, and vulnerability management across the enterprise technology estate."
   }
 ];
 

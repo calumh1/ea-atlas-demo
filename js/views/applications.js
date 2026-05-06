@@ -4,7 +4,7 @@
 (function () {
   window.atlasViews = window.atlasViews || {};
 
-  let state = { sort: 'title', dir: 1, filterTier: '', filterStatus: '', search: '' };
+  let state = { sort: 'title', dir: 1, filterTier: '', filterType: '', filterStatus: '', search: '' };
   let cache = null;
 
   async function render(host) {
@@ -20,6 +20,14 @@
             <option value="2">Tier 2</option>
             <option value="3">Tier 3</option>
             <option value="4">Tier 4</option>
+          </select>
+          <select id="app-type">
+            <option value="">All types</option>
+            <option value="SaaS">SaaS</option>
+            <option value="PaaS">PaaS</option>
+            <option value="On Premise">On Premise</option>
+            <option value="Technology">Technology</option>
+            <option value="Business">Business</option>
           </select>
           <select id="app-status">
             <option value="">All lifecycle statuses</option>
@@ -53,6 +61,7 @@
 
     host.querySelector('#app-search').oninput = e => { state.search = e.target.value.toLowerCase(); paint(); };
     host.querySelector('#app-tier').onchange = e => { state.filterTier = e.target.value; paint(); };
+    host.querySelector('#app-type').onchange = e => { state.filterType = e.target.value; paint(); };
     host.querySelector('#app-status').onchange = e => { state.filterStatus = e.target.value; paint(); };
     host.querySelectorAll('[data-sort]').forEach(th => {
       th.onclick = () => {
@@ -95,6 +104,7 @@
     let rows = cache.applications.slice();
 
     if (state.filterTier)   rows = rows.filter(a => String(a.eaTier) === state.filterTier);
+    if (state.filterType)   rows = rows.filter(a => a.applicationType === state.filterType);
     if (state.filterStatus) rows = rows.filter(a => a.lifecycleStatus === state.filterStatus);
     if (state.search) {
       const q = state.search;

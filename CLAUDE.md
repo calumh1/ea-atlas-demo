@@ -17,10 +17,18 @@ ea_atlas/
 ├── index.html              # App shell — load order matters
 ├── css/styles.css          # All styles. Liberty/ATLAS tokens at top.
 ├── assets/ea_atlas_logo.png
+├── data/                   # One file per entity — edit these when changing data
+│   ├── domains.js
+│   ├── capabilities.js
+│   ├── applications.js
+│   ├── taxonomy.js
+│   ├── technologies.js
+│   ├── projects.js
+│   ├── tech-debt.js
+│   └── strategies.js
 ├── js/
 │   ├── app.js              # Two-tier nav router + atlasUI panel helper
 │   ├── data.js             # Data layer contract — views talk only to this
-│   ├── data-embedded.js    # Today's source: JSON + mock mappings
 │   └── views/              # One file per view, each self-registers
 │       ├── bcm.js          # BCM heatmap viewer (4 modes)
 │       ├── applications.js # Application registry table
@@ -43,7 +51,7 @@ window.atlasViews   ← each view file registers itself onto this
 window.atlasUI      ← from js/app.js (shared panel helper)
 ```
 
-**Views never touch `data-embedded.js` directly.** They only call methods on `window.atlasData`. This is the contract that lets us swap to SharePoint without changing any view. If you find yourself reaching for `EmbeddedData.X` from inside a view, stop — add a method to the data layer instead.
+**Views never touch the `data/` files directly.** They only call methods on `window.atlasData`. This is the contract that lets us swap to SharePoint without changing any view. If you find yourself reading `window.atlasData.capabilities` directly from a view, stop — use `loadAll()` or a dedicated method instead.
 
 The data layer methods all return Promises (today they wrap `Promise.resolve(...)`):
 
@@ -83,7 +91,7 @@ Escape user-visible strings before injecting. Each view has its own local `esc()
 
 ### Adding a new entity
 
-The flow is: extend the SharePoint schema (in `liberty_ea_sharepoint_lists.xlsx` if it lives there, otherwise note the addition), add a method to `atlasData`, add the data to `data-embedded.js`. **Both halves move together** — adding to embedded without adding to the contract leaves views unable to reach it; adding the contract without embedded data breaks `loadAll()`.
+The flow is: extend the SharePoint schema (in `liberty_ea_sharepoint_lists.xlsx` if it lives there, otherwise note the addition), add a method to `atlasData` in `js/data.js`, add the data to the relevant file in `data/`. **Both halves move together** — adding to `data/` without adding to the contract leaves views unable to reach it; adding the contract without data breaks `loadAll()`.
 
 ## Branding rules — non-negotiable
 
@@ -99,15 +107,15 @@ All branding tokens live as CSS variables at the top of `styles.css`. Use them; 
 
 ## Data state — what's real vs mock
 
-**Real, sourced from project JSON files:**
-- 14 domains, 56 capabilities (descriptions, sort orders, core/supporting flags)
+**Real, sourced from `data/` files:**
+- 14 domains, 57 capabilities (descriptions, sort orders, core/supporting flags)
 - 19 applications (vendor, type, EA tier, owners, lifecycle, EOL flag, attestation)
 - 16 taxonomy segments with `LayoutHint` driving the spatial layout
 - 72 services
 - 157 technologies (lifecycle, descriptions, strategy alignment, URLs)
 
 **Mock — to be replaced as Calum supplies real data:**
-- 41 capability ↔ application mappings — Calum will supply a `CapabilityApplications` file matching the SharePoint schema. When that arrives, replace the inline list in `data-embedded.js` directly. Don't leave both.
+- 41 capability ↔ application mappings — Calum will supply a `CapabilityApplications` file matching the SharePoint schema. When that arrives, replace the inline list in `data/applications.js` (or whichever file holds mappings). Don't leave both.
 - 56 capability maturity scores — random per-domain profile, seeded.
 - 12 projects: 8 from Calum's inline plan + 4 invented (Win11 migration, Intune co-management, GitHub Enterprise, Sentinel One completion) to give the roadmap density. The 4 invented ones are flagged in the source — when real project data lands, drop them.
 - 32 project ↔ capability mappings, 5 project ↔ application mappings.
@@ -119,7 +127,7 @@ When Calum says "I have the file", confirm the columns match the SharePoint sche
 
 Eventual destination. Schemas are in `liberty_ea_sharepoint_lists.xlsx` from the parent project. Lists: Domains, Capabilities, Applications, CapabilityApplications, CapabilityMaturity, TaxonomySegments, TaxonomyServices, Technologies, Projects, ProjectCapabilities, ProjectApplications.
 
-**TaxonomyServices schema addition (not yet in XLSX):** Add `Description` column — single line of text, optional. All 72 service records in `data-embedded.js` are populated. When provisioning the SharePoint list, add this column before importing.
+**TaxonomyServices schema addition (not yet in XLSX):** Add `Description` column — single line of text, optional. All 72 service records in `data/taxonomy.js` are populated. When provisioning the SharePoint list, add this column before importing.
 
 ImpactType enum: Enables, Enhances, Retires, Depends On.
 RelationshipType enum: Replaces, Upgrades, Decommissions, Implements.
@@ -193,6 +201,6 @@ When Calum asks for something else, treat the above as background, not a queue. 
 - Don't suggest React/Vue/Svelte at this stage.
 - Don't reach for a CSS framework.
 - Don't quietly drop Liberty branding for "cleaner" defaults.
-- Don't leave both mock and real data in `data-embedded.js`. When real arrives, the mock goes.
+- Don't leave both mock and real data in the same `data/` file. When real arrives, the mock goes.
 - Don't cite "best practice" without reasoning that applies to this specific situation. Calum knows the practices; he wants the judgement call.
 - Don't ask permission for small things — make a reasonable assumption, state it inline, move on.
