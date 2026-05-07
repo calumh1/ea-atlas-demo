@@ -2,20 +2,20 @@
 
 ## Who you're working with
 
-Calum, Senior Manager Enterprise Architecture at Liberty Utilities (Mississauga, Canada). 20+ years in IT — networking → infrastructure → EA. TOGAF 9, Azure, ITIL 4. Leads M365 Copilot deployment, AI agent POCs, cloud governance. Currently job searching for Principal/Director-level architecture roles, so this tool is partly a portfolio piece.
+This is the demo copy of EA ATLAS using fictional CanTor Utilities data (EPRI BCM, fictional apps, projects, and strategies). It is used as a portfolio demonstration piece.
 
 Treat him as a senior technical peer. Don't explain basic IT, cloud, or architecture concepts. Be direct and candid — skip preamble and filler. Prose over bullets in conversation. Honest assessments, including when something is a bad idea. Production-quality code with minimal comments, no over-commenting obvious things. When suggesting design decisions, give a recommendation with reasoning, not a list of options with no opinion.
 
 ## What ATLAS is
 
-A custom enterprise architecture tool. The acronym is **A**rchitecture, **T**echnology, **L**andscape & **S**trategy. Liberty-branded, currently a local-laptop prototype with embedded data, intended to migrate to SharePoint Lists as its data backend. Same Liberty palette throughout (purple `#7C4DFF`, cyan `#05CFFF`, green `#71E023`, plus yellow/orange/pink), three-colour gradient bar, dark `#080808` header.
+A custom enterprise architecture tool. The acronym is **A**rchitecture, **T**echnology, **L**andscape & **S**trategy. Demo copy using fictional CanTor Utilities data. Same palette throughout (purple `#7C4DFF`, cyan `#05CFFF`, green `#71E023`, plus yellow/orange/pink), three-colour gradient bar, dark `#080808` header.
 
 ## Project structure
 
 ```
 ea_atlas/
 ├── index.html              # App shell — load order matters
-├── css/styles.css          # All styles. Liberty/ATLAS tokens at top.
+├── css/styles.css          # All styles. CanTor/ATLAS tokens at top.
 ├── assets/ea_atlas_logo.png
 ├── data/                   # One file per entity — edit these when changing data
 │   ├── domains.js
@@ -32,7 +32,7 @@ ea_atlas/
 │   └── views/              # One file per view, each self-registers
 │       ├── bcm.js          # BCM heatmap viewer (4 modes)
 │       ├── applications.js # Application registry table
-│       ├── taxonomy.js     # Spatial Liberty IT Taxonomy v2.1
+│       ├── taxonomy.js     # Spatial CanTor IT Taxonomy v1.0
 │       ├── techdebt.js     # Tech Debt landscape (mock)
 │       ├── projects.js     # Project portfolio table
 │       └── roadmap.js      # Quarterly timeline
@@ -200,7 +200,7 @@ When Calum asks for something else, treat the above as background, not a queue. 
 - Don't add a build step.
 - Don't suggest React/Vue/Svelte at this stage.
 - Don't reach for a CSS framework.
-- Don't quietly drop Liberty branding for "cleaner" defaults.
+- Don't quietly drop CanTor branding for "cleaner" defaults.
 - Don't leave both mock and real data in the same `data/` file. When real arrives, the mock goes.
 - Don't cite "best practice" without reasoning that applies to this specific situation. Calum knows the practices; he wants the judgement call.
 - Don't ask permission for small things — make a reasonable assumption, state it inline, move on.

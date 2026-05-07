@@ -5,7 +5,7 @@
   window.atlasViews = window.atlasViews || {};
 
   async function render(host) {
-    const { enterpriseStrategies, strategicInitiatives } = await window.atlasData.loadAll();
+    const { enterpriseStrategies, strategicInitiatives, strategyProjects, projects } = await window.atlasData.loadAll();
 
     const vision  = enterpriseStrategies.find(s => s.parentId == null);
     const pillars = enterpriseStrategies
@@ -15,7 +15,7 @@
     host.innerHTML = `
       ${vision ? visionBanner(vision) : ''}
       <div class="strategy-grid">
-        ${pillars.map(s => strategyCard(s, strategicInitiatives)).join('')}
+        ${pillars.map(s => strategyCard(s, strategicInitiatives, strategyProjects, projects)).join('')}
       </div>
     `;
   }
@@ -30,10 +30,15 @@
     `;
   }
 
-  function strategyCard(s, initiatives) {
+  function strategyCard(s, initiatives, strategyProjects, projects) {
     const inits = initiatives
       .filter(i => i.parentStrategyId === s.id)
       .sort((a, b) => a.sortOrder - b.sortOrder);
+
+    const linkedProjects = (strategyProjects || [])
+      .filter(sp => sp.strategyId === s.id)
+      .map(sp => ({ ...sp, project: (projects || []).find(p => p.id === sp.projectId) }))
+      .filter(sp => sp.project);
 
     return `
       <div class="strategy-card" style="--s-colour:${esc(s.colour)}">
@@ -51,6 +56,18 @@
             <div class="strategy-initiatives">
               <div class="strategy-init-label">Initiatives</div>
               ${inits.map(i => initiativeRow(i)).join('')}
+            </div>
+          ` : ''}
+          ${linkedProjects.length ? `
+            <div class="strategy-initiatives">
+              <div class="strategy-init-label">Delivering Projects</div>
+              <ul class="linked-list">
+                ${linkedProjects.map(sp => `
+                  <li>
+                    <span>${esc(sp.project.title)}</span>
+                    <span class="meta">${esc(sp.alignmentNote)}</span>
+                  </li>`).join('')}
+              </ul>
             </div>
           ` : ''}
         </div>

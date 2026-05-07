@@ -1,1006 +1,312 @@
 window.atlasData = window.atlasData || {};
 
 window.atlasData.capabilities = [
-  {
-    "id": 1,
-    "title": "Electric Generation Planning",
-    "domain": "Commodity Origination",
-    "sortOrder": 1,
-    "description": "Long and short-term planning of electricity generation capacity, dispatch scheduling, and output forecasting."
-  },
-  {
-    "id": 2,
-    "title": "Electric Generation Operations",
-    "domain": "Commodity Origination",
-    "sortOrder": 2,
-    "description": "Day-to-day operation of electricity generation plant and equipment to meet dispatch obligations."
-  },
-  {
-    "id": 3,
-    "title": "Electric Generation Maintenance",
-    "domain": "Commodity Origination",
-    "sortOrder": 3,
-    "description": "Preventive and corrective maintenance of electricity generation assets to maintain availability and performance."
-  },
-  {
-    "id": 4,
-    "title": "Electric Generation Outage Management",
-    "domain": "Commodity Origination",
-    "sortOrder": 4,
-    "description": "Scheduling and management of planned and unplanned generation outages including coordination with system operators."
-  },
-  {
-    "id": 5,
-    "title": "Commodity Procurement and Contracts",
-    "domain": "Commodity Origination",
-    "sortOrder": 5,
-    "description": "Procurement of commodity supply including electricity, gas, and water, covering contract negotiation, supplier agreements, and supply terms management."
-  },
-  {
-    "id": 6,
-    "title": "Commodity Supply Portfolio Management",
-    "domain": "Commodity Origination",
-    "sortOrder": 6,
-    "description": "Strategic management of the commodity supply portfolio including volume balancing, hedging, risk exposure, and optimisation across all commodity types."
-  },
-  {
-    "id": 7,
-    "title": "Engineering & Design",
-    "domain": "Construction",
-    "sortOrder": 1,
-    "description": "Technical design and engineering for capital projects."
-  },
-  {
-    "id": 8,
-    "title": "Build & Construct",
-    "domain": "Construction",
-    "sortOrder": 2,
-    "description": "Physical construction and site delivery activities."
-  },
-  {
-    "id": 9,
-    "title": "Quality Assurance",
-    "domain": "Construction",
-    "sortOrder": 3,
-    "description": "Inspection, testing, and quality control during construction."
-  },
-  {
-    "id": 10,
-    "title": "Transmission Planning",
-    "domain": "Energy Transmission",
-    "sortOrder": 1,
-    "description": "Network expansion and capacity planning for transmission infrastructure."
-  },
-  {
-    "id": 11,
-    "title": "Transmission Operations",
-    "domain": "Energy Transmission",
-    "sortOrder": 2,
-    "description": "Real-time operation and switching of the transmission network."
-  },
-  {
-    "id": 12,
-    "title": "Transmission Maintenance",
-    "domain": "Energy Transmission",
-    "sortOrder": 3,
-    "description": "Maintenance of high-capacity transmission infrastructure including conductors, substations, pipelines, and associated plant."
-  },
-  {
-    "id": 13,
-    "title": "Transmission Outage Management",
-    "domain": "Energy Transmission",
-    "sortOrder": 4,
-    "description": "Coordination of transmission outages for safety and reliability."
-  },
-  {
-    "id": 14,
-    "title": "Distribution Planning",
-    "domain": "Energy Distribution",
-    "sortOrder": 1,
-    "description": "Planning and design of the commodity distribution network including capacity management, infrastructure expansion, and service connections for electricity, gas, and water."
-  },
-  {
-    "id": 15,
-    "title": "Distribution Operations",
-    "domain": "Energy Distribution",
-    "sortOrder": 2,
-    "description": "Real-time operation and control of the distribution network."
-  },
-  {
-    "id": 16,
-    "title": "Distribution Maintenance",
-    "domain": "Energy Distribution",
-    "sortOrder": 3,
-    "description": "Maintenance of distribution network infrastructure including lines, pipes, valves, meters, and associated field equipment."
-  },
-  {
-    "id": 17,
-    "title": "Distribution Outage Management",
-    "domain": "Energy Distribution",
-    "sortOrder": 4,
-    "description": "Detection, isolation, and restoration of supply interruptions across the distribution network."
-  },
-  {
-    "id": 18,
-    "title": "Field Work Planning & Scheduling",
-    "domain": "Field Service",
-    "sortOrder": 1,
-    "description": "Scheduling and dispatching of field crews and work orders."
-  },
-  {
-    "id": 19,
-    "title": "Field Operations",
-    "domain": "Field Service",
-    "sortOrder": 2,
-    "description": "Execution of field work orders including inspections and connections."
-  },
-  {
-    "id": 20,
-    "title": "Fleet Operations",
-    "domain": "Field Service",
-    "sortOrder": 3,
-    "description": "Management of the vehicle fleet used by field crews."
-  },
-  {
-    "id": 21,
-    "title": "Network Awareness & Control",
-    "domain": "Network & Resource Management",
-    "sortOrder": 1,
-    "description": "SCADA-driven real-time monitoring, visibility, and operational control of commodity delivery networks including electricity, gas, and water."
-  },
-  {
-    "id": 22,
-    "title": "Commodity Measurement",
-    "domain": "Network & Resource Management",
-    "sortOrder": 2,
-    "description": "Metering, data collection, and validation of commodity consumption and delivery volumes across electricity, gas, and water networks."
-  },
-  {
-    "id": 23,
-    "title": "Commodity Efficiency",
-    "domain": "Network & Resource Management",
-    "sortOrder": 3,
-    "description": "Demand-side management and commodity conservation programmes to reduce consumption and optimise network efficiency."
-  },
-  {
-    "id": 24,
-    "title": "Distributed Energy Resources",
-    "domain": "Network & Resource Management",
-    "sortOrder": 4,
-    "description": "Integration and management of distributed and localised supply resources including renewable generation, storage, and small-scale production assets."
-  },
-  {
-    "id": 25,
-    "title": "Energy Trades",
-    "domain": "Network & Resource Management",
-    "sortOrder": 5,
-    "description": "Wholesale commodity trading, purchasing, and settlement including electricity, gas, and other traded commodities."
-  },
-  {
-    "id": 26,
-    "title": "Marketing",
-    "domain": "Customer Services",
-    "sortOrder": 1,
-    "description": "Brand, campaigns, and acquisition marketing activities."
-  },
-  {
-    "id": 27,
-    "title": "Sales",
-    "domain": "Customer Services",
-    "sortOrder": 2,
-    "description": "Residential and commercial customer sales and onboarding."
-  },
-  {
-    "id": 28,
-    "title": "Customer Relationship",
-    "domain": "Customer Services",
-    "sortOrder": 3,
-    "description": "Ongoing customer engagement, service requests, and complaints."
-  },
-  {
-    "id": 29,
-    "title": "Billing, Payments & Collections",
-    "domain": "Customer Services",
-    "sortOrder": 4,
-    "description": "Invoice generation, payment processing, and debt management."
-  },
-  {
-    "id": 30,
-    "title": "Business Strategy & Development",
-    "domain": "Enterprise & Governance",
-    "sortOrder": 1,
-    "description": "Corporate strategy, M&A, and business development activities."
-  },
-  {
-    "id": 31,
-    "title": "Regulatory and Tariff Strategy",
-    "domain": "Enterprise & Governance",
-    "sortOrder": 2,
-    "description": "Development and execution of regulatory strategy including rate case preparation, tariff filings, and engagement with energy and utility regulators."
-  },
-  {
-    "id": 32,
-    "title": "Corporate Relations and Communications",
-    "domain": "Enterprise & Governance",
-    "sortOrder": 3,
-    "description": "Investor relations, government affairs, and public communications."
-  },
-  {
-    "id": 33,
-    "title": "Risk & Compliance",
-    "domain": "Enterprise & Governance",
-    "sortOrder": 4,
-    "description": "Enterprise risk management, regulatory compliance, and audit."
-  },
-  {
-    "id": 34,
-    "title": "Legal Affairs",
-    "domain": "Enterprise & Governance",
-    "sortOrder": 5,
-    "description": "Legal counsel, litigation management, contract review, and corporate legal governance."
-  },
-  {
-    "id": 35,
-    "title": "Safety Management",
-    "domain": "Health Safety & Environment",
-    "sortOrder": 1,
-    "description": "Policies, procedures, and systems for workplace safety."
-  },
-  {
-    "id": 36,
-    "title": "Incident & Hazard Management",
-    "domain": "Health Safety & Environment",
-    "sortOrder": 2,
-    "description": "Reporting, investigation, and resolution of safety incidents."
-  },
-  {
-    "id": 37,
-    "title": "Environmental Management",
-    "domain": "Health Safety & Environment",
-    "sortOrder": 3,
-    "description": "Environmental compliance, monitoring, and sustainability programmes."
-  },
-  {
-    "id": 38,
-    "title": "Workforce Strategy & Planning",
-    "domain": "Human Resource",
-    "sortOrder": 1,
-    "description": "Headcount planning, succession, and workforce strategy."
-  },
-  {
-    "id": 39,
-    "title": "Talent Acquisition",
-    "domain": "Human Resource",
-    "sortOrder": 2,
-    "description": "Recruitment, onboarding, and employer brand."
-  },
-  {
-    "id": 40,
-    "title": "Learning & Development",
-    "domain": "Human Resource",
-    "sortOrder": 3,
-    "description": "Training, skills development, and competency management."
-  },
-  {
-    "id": 41,
-    "title": "Human Resource Management",
-    "domain": "Human Resource",
-    "sortOrder": 4,
-    "description": "Employee administration, HR policy management, payroll, benefits, and performance management processes."
-  },
-  {
-    "id": 42,
-    "title": "Budget and Financial Planning",
-    "domain": "Finance",
-    "sortOrder": 1,
-    "description": "Budgeting, forecasting, and management reporting."
-  },
-  {
-    "id": 43,
-    "title": "Accounting & Reporting",
-    "domain": "Finance",
-    "sortOrder": 2,
-    "description": "General ledger, accounts payable/receivable, and statutory reporting."
-  },
-  {
-    "id": 44,
-    "title": "Treasury & Tax",
-    "domain": "Finance",
-    "sortOrder": 3,
-    "description": "Cash management, debt financing, and tax compliance."
-  },
-  {
-    "id": 45,
-    "title": "Settlements and Payments",
-    "domain": "Finance",
-    "sortOrder": 4,
-    "description": "Settlement of commodity trades, interparty transactions, and management of financial obligations including payment processing and reconciliation."
-  },
-  {
-    "id": 46,
-    "title": "Supply Chain Strategy",
-    "domain": "Supply Chain & Procurement",
-    "sortOrder": 1,
-    "description": "Development of supply chain strategy, category management frameworks, and sourcing policies to optimise cost, quality, and supply security."
-  },
-  {
-    "id": 47,
-    "title": "Supplier Relationship Management",
-    "domain": "Supply Chain & Procurement",
-    "sortOrder": 2,
-    "description": "Ongoing management of supplier relationships, performance monitoring, and strategic partnership development across the supplier base."
-  },
-  {
-    "id": 48,
-    "title": "Procurement of Goods and Services",
-    "domain": "Supply Chain & Procurement",
-    "sortOrder": 3,
-    "description": "End-to-end procurement execution including requisition management, sourcing, purchase order processing, and supplier onboarding."
-  },
-  {
-    "id": 49,
-    "title": "Supply Logistics",
-    "domain": "Supply Chain & Procurement",
-    "sortOrder": 4,
-    "description": "Transportation, delivery, and logistics management for materials, equipment, and supplies to field crews, construction sites, and operational facilities."
-  },
-  {
-    "id": 50,
-    "title": "Asset Portfolios",
-    "domain": "Asset Management",
-    "sortOrder": 1,
-    "description": "Definition and governance of asset portfolios across the enterprise including classification, segmentation, and investment prioritisation."
-  },
-  {
-    "id": 51,
-    "title": "Asset Strategy & Planning",
-    "domain": "Asset Management",
-    "sortOrder": 2,
-    "description": "Long-term asset investment planning, lifecycle strategy, and portfolio optimisation across infrastructure and technology assets."
-  },
-  {
-    "id": 52,
-    "title": "Asset Financials and Compliance",
-    "domain": "Asset Management",
-    "sortOrder": 3,
-    "description": "Management of asset financial records including capitalisation, depreciation accounting, regulatory asset base reporting, and compliance with asset management standards."
-  },
-  {
-    "id": 53,
-    "title": "Digital Strategy & Governance",
-    "domain": "Digital Technology",
-    "sortOrder": 1,
-    "description": "Technology strategy, enterprise architecture, and standards governance."
-  },
-  {
-    "id": 54,
-    "title": "Digital Development",
-    "domain": "Digital Technology",
-    "sortOrder": 2,
-    "description": "Software development, integration, and deployment."
-  },
-  {
-    "id": 55,
-    "title": "Digital Operations",
-    "domain": "Digital Technology",
-    "sortOrder": 3,
-    "description": "Compute, storage, network, and cloud platform operations."
-  },
-  {
-    "id": 56,
-    "title": "Digital User Support",
-    "domain": "Digital Technology",
-    "sortOrder": 4,
-    "description": "End-user technology support including service desk, device management, and productivity service delivery."
-  },
-  {
-    "id": 57,
-    "title": "Cyber Security Operations",
-    "domain": "Digital Technology",
-    "sortOrder": 5,
-    "description": "Security monitoring, threat detection, incident response, and vulnerability management across the enterprise technology estate."
-  }
+  /* ── Domain 1: Enterprise Strategy and Planning ── */
+  { "id": 1,  "title": "Business Concept and Vision Development",     "domain": "Enterprise Strategy and Planning",        "sortOrder": 1, "description": "Creating a conceptual framework of the organization's business activity and strategic vision with long-term applicability. Scout internal capabilities and customer needs to identify strategic fit." },
+  { "id": 2,  "title": "Business Strategy Management",                "domain": "Enterprise Strategy and Planning",        "sortOrder": 2, "description": "Continually defining and adjusting goals, desired outcomes, and roadmaps in response to external drivers that change the economic, regulatory, and social environment." },
+  { "id": 3,  "title": "Regulatory Strategy Management",              "domain": "Enterprise Strategy and Planning",        "sortOrder": 3, "description": "Aligning regulatory strategy with business strategy. Confirm strategies, perform gap analysis, identify regulatory requirements, formulate strategies, and develop regulatory submissions." },
+  { "id": 4,  "title": "Tariff Management",                           "domain": "Enterprise Strategy and Planning",        "sortOrder": 4, "description": "Develop, maintain, and publish a tariff for regulated products and services." },
+  { "id": 5,  "title": "Business Continuity",                         "domain": "Enterprise Strategy and Planning",        "sortOrder": 5, "description": "Planning and executing contingency plans to ensure continued operation of business-critical capabilities in the event of a damaging event such as a hurricane, fire, or cyber attack." },
+
+  /* ── Domain 2: Enterprise Performance Management ── */
+  { "id": 6,  "title": "Knowledge Management",                        "domain": "Enterprise Performance Management",       "sortOrder": 1, "description": "Creating and administering the organization's knowledge management capability. Develop a strategy, assess maturity, and design and implement knowledge management approaches." },
+  { "id": 7,  "title": "Enterprise Performance Measurement",          "domain": "Enterprise Performance Management",       "sortOrder": 2, "description": "Creating and administering a strategy to manage organizational performance. Benchmark internal processes and the organization as a whole." },
+  { "id": 8,  "title": "Enterprise Quality Management",               "domain": "Enterprise Performance Management",       "sortOrder": 3, "description": "Managing attributes closely associated with quality of output — determine quality requirements, evaluate performance against requirements, and manage non-conformance." },
+  { "id": 9,  "title": "EHS Management",                              "domain": "Enterprise Performance Management",       "sortOrder": 4, "description": "Determining impacts of environmental health and safety. Create and implement the EHS program, train employees, and oversee and manage EHS compliance." },
+
+  /* ── Domain 3: Enterprise Transformation and Innovation ── */
+  { "id": 10, "title": "Business Process Management",                 "domain": "Enterprise Transformation and Innovation","sortOrder": 1, "description": "Establishing and administering governance for management of processes. Define business processes, administer performance, and enhance the processes over time." },
+  { "id": 11, "title": "Program and Project Management",              "domain": "Enterprise Transformation and Innovation","sortOrder": 2, "description": "Managing investments, products, businesses, and brands along with related projects that together constitute a program." },
+  { "id": 12, "title": "Organizational Change Management",            "domain": "Enterprise Transformation and Innovation","sortOrder": 3, "description": "Planning, designing, and executing changes to the organization's structure, culture, policies, and practices." },
+  { "id": 13, "title": "Innovation",                                  "domain": "Enterprise Transformation and Innovation","sortOrder": 4, "description": "Identifying, assessing, and incorporating new ideas into the organization — including both sustaining (incremental) and disruptive (radical) innovation." },
+  { "id": 14, "title": "Enterprise Architecture",                     "domain": "Enterprise Transformation and Innovation","sortOrder": 5, "description": "Translating business vision and strategy into effective change through analysis of required business and technical capabilities and functional gaps, ensuring the portfolio is interoperable and extensible." },
+
+  /* ── Domain 4: Grid Planning ── */
+  { "id": 15, "title": "Generation and Load Forecasting",             "domain": "Grid Planning",                           "sortOrder": 1, "description": "Determining how much generation will be required and how much load will be created for a given timeframe, and determining how to make these match." },
+  { "id": 16, "title": "Integrated Resource Planning",                "domain": "Grid Planning",                           "sortOrder": 2, "description": "A planning methodology integrating supply and demand-side options for providing energy services, incorporating environmental and social aspects and the potential for demand reduction." },
+  { "id": 17, "title": "Grid Model Management",                       "domain": "Grid Planning",                           "sortOrder": 3, "description": "Maintaining a master data model of the electric grid describing equipment, topology, behavior parameters, and operating conditions — including past, as-built, and prospective changes." },
+  { "id": 18, "title": "Grid Protection",                             "domain": "Grid Planning",                           "sortOrder": 4, "description": "Protection of the electric grid against major events. Determining investments and designs required to address hazards using a risk-based approach. Maintain network protection settings." },
+  { "id": 19, "title": "System Reliability Planning",                 "domain": "Grid Planning",                           "sortOrder": 5, "description": "Designing and implementing grid resources and services that can respond to variability in demand and unplanned outages to generation or transmission." },
+  { "id": 20, "title": "Grid Resilience",                             "domain": "Grid Planning",                           "sortOrder": 6, "description": "Minimizing the consequences of extreme weather or malicious physical or cyber attacks on the grid." },
+
+  /* ── Domain 5: Electric Service Delivery ── */
+  { "id": 21, "title": "Utility Service Delivery Strategy",           "domain": "Electric Service Delivery",               "sortOrder": 1, "description": "Defining goals, policies, processes, workplace, infrastructure, and feedback mechanisms for service delivery." },
+  { "id": 22, "title": "Customer Connectivity Resource Management",   "domain": "Electric Service Delivery",               "sortOrder": 2, "description": "Predicting and delivering the resources required for customer connectivity." },
+  { "id": 23, "title": "Customer Connectivity",                       "domain": "Electric Service Delivery",               "sortOrder": 3, "description": "Rendering service to the customer by initiating, executing, and completing tasks associated with new and existing service delivery." },
+  { "id": 24, "title": "Customer Emergency Management",               "domain": "Electric Service Delivery",               "sortOrder": 4, "description": "Handling emergencies such as downed wires or gas leaks and coordinating with other first responders as needed." },
+  { "id": 25, "title": "Customer Outage Management",                  "domain": "Electric Service Delivery",               "sortOrder": 5, "description": "Determining the location of an outage, determining and communicating estimated time to restoration, and managing service restoration." },
+
+  /* ── Domain 6: Customer Management ── */
+  { "id": 26, "title": "Customer Relationship Management",            "domain": "Customer Management",                     "sortOrder": 1, "description": "Managing principles, practices, and guidelines for interacting with customers — including direct interactions, sales and service processes, forecasting, and analysis of customer trends." },
+  { "id": 27, "title": "Sales and Marketing",                         "domain": "Customer Management",                     "sortOrder": 2, "description": "Developing sales channels, content, and strategies for communicating the value of the organization and its products and services." },
+  { "id": 28, "title": "Customer Experience",                         "domain": "Customer Management",                     "sortOrder": 3, "description": "Front-of-office interaction with customers, focusing on resolving complaints, service requests, and answering inquiries." },
+  { "id": 29, "title": "Customer Program Management",                 "domain": "Customer Management",                     "sortOrder": 4, "description": "Designing programs including products, services, and assistance for customer market segments, and managing associated tariff design." },
+
+  /* ── Domain 7: Human Capital Management ── */
+  { "id": 30, "title": "HR Strategy Management",                      "domain": "Human Capital Management",                "sortOrder": 1, "description": "Identifying current and future human resources needs to achieve business goals." },
+  { "id": 31, "title": "Employee Recruitment",                        "domain": "Human Capital Management",                "sortOrder": 2, "description": "Identifying and soliciting individuals internally or externally to fill vacancies or for organizational growth." },
+  { "id": 32, "title": "Employee Development Management",             "domain": "Human Capital Management",                "sortOrder": 3, "description": "Assisting employees in improving existing competencies and developing new skills." },
+  { "id": 33, "title": "Employee Relationship Management",            "domain": "Human Capital Management",                "sortOrder": 4, "description": "Developing, maintaining, and improving employee relationships." },
+  { "id": 34, "title": "Employee Recognition",                        "domain": "Human Capital Management",                "sortOrder": 5, "description": "Rewarding and recognizing employee contribution with the objective of retention." },
+  { "id": 35, "title": "Employee Reassignment Management",            "domain": "Human Capital Management",                "sortOrder": 6, "description": "Reassigning employees at the discretion of the employer with different performance requirements." },
+
+  /* ── Domain 8: Information Technology Management ── */
+  { "id": 36, "title": "IT Customer Relationships Management",        "domain": "Information Technology Management",       "sortOrder": 1, "description": "Creating and administering relationships with IT customers. Understanding business requirements, planning and communicating IT services, and establishing IT service levels." },
+  { "id": 37, "title": "IT Customer Engagement",                      "domain": "Information Technology Management",       "sortOrder": 2, "description": "Managing ongoing relationships between IT and the business units it serves — including OLAs, SLAs, demand management, and service performance reporting." },
+  { "id": 38, "title": "IT Strategy Management",                      "domain": "Information Technology Management",       "sortOrder": 3, "description": "Creating an organization-wide strategy for the IT function. Define IT architecture, manage the IT portfolio, research and innovate, and assess the performance and value of IT." },
+  { "id": 39, "title": "IT Resiliency and Risk Management",           "domain": "Information Technology Management",       "sortOrder": 4, "description": "Strategizing and executing changes in IT solutions and services. Create deployment plans, communicate with stakeholders, implement changes, and verify their effect." },
+  { "id": 40, "title": "Information Management",                      "domain": "Information Technology Management",       "sortOrder": 5, "description": "Creating strategies to manage the enterprise's information and content. Outline information architecture, administer information resources, and manage data and content." },
+  { "id": 41, "title": "IT Services and Solutions Management",        "domain": "Information Technology Management",       "sortOrder": 6, "description": "Designing, deploying, maintaining, and monitoring the IT services and solutions catalogue. Evaluating performance and communicating results to management." },
+  { "id": 42, "title": "IT Vendor Management",                        "domain": "Information Technology Management",       "sortOrder": 7, "description": "Identifying, developing, and leveraging long-term partnerships with application vendors, cloud vendors, and technical services providers beyond transactional services relationships." },
+  { "id": 43, "title": "Telecom Network Management",                  "domain": "Information Technology Management",       "sortOrder": 8, "description": "Managing communications networks — LAN, WAN, FAN — whether hard-wired, mesh, tower-based, or other communications solutions. Covers planning, design, construction, and operations." },
+  { "id": 44, "title": "Telecommunication Strategy",                  "domain": "Information Technology Management",       "sortOrder": 9, "description": "High-level strategy for telecommunications, including identification of required reliability and availability of network infrastructure and appropriate redundancy of communication links." },
+  { "id": 45, "title": "Network Operations Management",               "domain": "Information Technology Management",       "sortOrder": 10, "description": "Real-time operations of the telecom network. Handling faults, outages, and abnormal conditions with remediation." },
+
+  /* ── Domain 9: Financial Resources Management ── */
+  { "id": 46, "title": "Accounting and Reporting Management",         "domain": "Financial Resources Management",          "sortOrder": 1,  "description": "Systematically recording, analyzing, interpreting, preparing, and reporting financial transactions and information to facilitate decision-making and compliance with regulations." },
+  { "id": 47, "title": "Revenue Accounting",                          "domain": "Financial Resources Management",          "sortOrder": 2,  "description": "Recognizing and recording revenue earned by the organization in its financial statements, including determining when revenue is earned and how much to recognize in each period." },
+  { "id": 48, "title": "Capital Project Management",                  "domain": "Financial Resources Management",          "sortOrder": 3,  "description": "Planning, executing, and controlling projects that involve significant capital investments — typically long-term, complex projects requiring substantial financial resources." },
+  { "id": 49, "title": "Payroll Management",                          "domain": "Financial Resources Management",          "sortOrder": 4,  "description": "Overseeing and administering the financial aspects of employee compensation, including salaries, wages, bonuses, deductions, and taxes in compliance with labor laws." },
+  { "id": 50, "title": "Accounts Payable and Expense Management",     "domain": "Financial Resources Management",          "sortOrder": 5,  "description": "Recording, verifying, and processing invoices and expense reports, reconciling accounts, making payments to suppliers, and reimbursing employees for eligible expenses." },
+  { "id": 51, "title": "Treasury Operations Management",              "domain": "Financial Resources Management",          "sortOrder": 6,  "description": "Overseeing and controlling financial activities related to cash management, liquidity, and investments — optimizing liquidity, cash flows, and reducing financial risks." },
+  { "id": 52, "title": "Internal Financial Controls Management",      "domain": "Financial Resources Management",          "sortOrder": 7,  "description": "Ensuring reliability, accuracy, and integrity of financial information and safeguarding of assets. Providing assurance about achievement of effective operations and reliable financial reporting." },
+  { "id": 53, "title": "Tax Management",                              "domain": "Financial Resources Management",          "sortOrder": 8,  "description": "Planning and administering taxes to minimize the tax burden while ensuring compliance with tax laws and regulations. Requires comprehensive understanding of tax laws, regulations, and incentives." },
+  { "id": 54, "title": "International Funds Management",              "domain": "Financial Resources Management",          "sortOrder": 9,  "description": "Combining financial resources from various international sources into a centralized fund. Involves transferring and consolidating funds from multiple countries or currencies." },
+  { "id": 55, "title": "Global Trade Management",                     "domain": "Financial Resources Management",          "sortOrder": 10, "description": "Effectively managing and optimizing international trade operations, including compliance with customs regulations, trade laws, and documentation requirements." },
+  { "id": 56, "title": "Financial Risk Management",                   "domain": "Financial Resources Management",          "sortOrder": 11, "description": "Identifying, assessing, and mitigating potential risks that may impact financial stability, profitability, and overall financial objectives." },
+
+  /* ── Domain 10: Asset Management ── */
+  { "id": 57, "title": "Asset Management Strategy and Planning",      "domain": "Asset Management",                        "sortOrder": 1, "description": "Defining a long-term optimized approach for the management of assets." },
+  { "id": 58, "title": "Asset Lifecycle Management",                  "domain": "Asset Management",                        "sortOrder": 2, "description": "Optimizing an asset's reliability and operational performance during its life span." },
+  { "id": 59, "title": "Asset Performance Management",                "domain": "Asset Management",                        "sortOrder": 3, "description": "Measuring and optimizing revenue, profitability, and customer satisfaction through on-time delivery and quality, in addition to reliability and availability." },
+  { "id": 60, "title": "Systems Engineering",                         "domain": "Asset Management",                        "sortOrder": 4, "description": "Selecting or designing assets and facilities that meet performance, safety, and reliability requirements for network enhancements." },
+  { "id": 61, "title": "Work Management",                             "domain": "Asset Management",                        "sortOrder": 5, "description": "Estimating, scheduling, and dispatching crews with the right skillsets, tools, and materials to complete field work." },
+  { "id": 62, "title": "Grid Resource Interconnection Management",    "domain": "Asset Management",                        "sortOrder": 6, "description": "Defining requirements for and managing the interconnection of generation and energy storage resources to the bulk electric grid." },
+  { "id": 63, "title": "DER Interconnection Management",              "domain": "Asset Management",                        "sortOrder": 7, "description": "Defining requirements for and managing the interconnection of generation and energy storage resources to the distribution grid." },
+  { "id": 64, "title": "Real Estate Management",                      "domain": "Asset Management",                        "sortOrder": 8, "description": "Managing real estate holdings, leases, easements, and right of ways." },
+  { "id": 65, "title": "Procurement and Supply Chain Management",     "domain": "Asset Management",                        "sortOrder": 9, "description": "Optimizing and executing the procurement and distribution of raw materials, finished goods, and services — optimizing for costs, timing, and vendor risk." },
+
+  /* ── Domain 11: Enterprise Risk Management ── */
+  { "id": 66, "title": "Enterprise Risk Management Strategy",         "domain": "Enterprise Risk Management",              "sortOrder": 1, "description": "Creating frameworks and coordinating all risk management activities for the entire organization. Managing enterprise risk by outlining policies, procedures, and communications." },
+  { "id": 67, "title": "Credit Management",                           "domain": "Enterprise Risk Management",              "sortOrder": 2, "description": "Calculating, monitoring, and limiting the funds owed to the enterprise to reduce credit exposure." },
+  { "id": 68, "title": "Business Resiliency Management",              "domain": "Enterprise Risk Management",              "sortOrder": 3, "description": "Adapting and responding to any internal or external opportunity, demand, disruption, or threat." },
+  { "id": 69, "title": "Threat Response Strategy",                    "domain": "Enterprise Risk Management",              "sortOrder": 4, "description": "Developing and executing a strategy to deal with threats to information, IT, OT, and communication infrastructure assets including malicious actors, malware, and DDoS attacks." },
+  { "id": 70, "title": "Cyber Security Management",                   "domain": "Enterprise Risk Management",              "sortOrder": 5, "description": "Protecting data and technology from unauthorized access or intentional attack." },
+  { "id": 71, "title": "Physical Security Management",                "domain": "Enterprise Risk Management",              "sortOrder": 6, "description": "Managing and securing access to physical infrastructure." },
+  { "id": 72, "title": "Emergency Management",                        "domain": "Enterprise Risk Management",              "sortOrder": 7, "description": "Planning, responding to, and recovering from emergency events." },
+  { "id": 73, "title": "Legal and Ethics Management",                 "domain": "Enterprise Risk Management",              "sortOrder": 8, "description": "Managing legal and ethical practices across the organization." },
+
+  /* ── Domain 12: External Relationship Management ── */
+  { "id": 74, "title": "Investor Relations",                          "domain": "External Relationship Management",        "sortOrder": 1, "description": "Creating strategic management responsibility for integrating finance, communication, marketing, and securities law compliance to allow effective two-way communication with the financial community." },
+  { "id": 75, "title": "Government and Industry Relations",           "domain": "External Relationship Management",        "sortOrder": 2, "description": "Managing relationships with government and industry representatives." },
+  { "id": 76, "title": "Board Relations",                             "domain": "External Relationship Management",        "sortOrder": 3, "description": "Managing relationships with the Board of Directors as representatives of the stockholders." },
+  { "id": 77, "title": "Public Relations",                            "domain": "External Relationship Management",        "sortOrder": 4, "description": "Developing and managing public relationship programs." },
+
+  /* ── Domain 13: Power Generation ── */
+  { "id": 78, "title": "Plant Scheduling",                            "domain": "Power Generation",                        "sortOrder": 1, "description": "Scheduling a plant's operations including taking it offline for periodic maintenance." },
+  { "id": 79, "title": "Plant Operation",                             "domain": "Power Generation",                        "sortOrder": 2, "description": "Day-to-day operation of a generation plant." },
+  { "id": 80, "title": "Fuel Forecasting",                            "domain": "Power Generation",                        "sortOrder": 3, "description": "Forecasting fuel demand (gas, coal, etc.) for the generation fleet." },
+  { "id": 81, "title": "Generation and Demand Measurement",           "domain": "Power Generation",                        "sortOrder": 4, "description": "Defining compliance rules, configuring meters, collecting and managing energy usage measurements to measure generation, demand, and inter-control area energy flows." },
+  { "id": 82, "title": "Chemical Management",                         "domain": "Power Generation",                        "sortOrder": 5, "description": "Controlling and monitoring the use of chemicals and their impact on plant systems and the surrounding environment." },
+  { "id": 83, "title": "Radiation Dose Management",                   "domain": "Power Generation",                        "sortOrder": 6, "description": "Monitoring, reporting, and alerting on radiation for personnel at the plant." },
+
+  /* ── Domain 14: Energy and Services Trading ── */
+  { "id": 84, "title": "Trading and Market Position Management",      "domain": "Energy and Services Trading",             "sortOrder": 1, "description": "Aggregating trading and market positions to determine overall risk exposures. Monitor supply/purchase plans, trade carbon certificates, and manage market positions." },
+  { "id": 85, "title": "Energy Market Participation",                 "domain": "Energy and Services Trading",             "sortOrder": 2, "description": "Defining and executing an overall trading strategy for buying and selling energy and other products in a market, including energy, carbon credits, and transmission rights." },
+  { "id": 86, "title": "Bilateral Trading Management",                "domain": "Energy and Services Trading",             "sortOrder": 3, "description": "Identifying and executing bilateral trades of energy, ancillary services, capacity, and transmission rights." },
+  { "id": 87, "title": "Fuel Trading Management",                     "domain": "Energy and Services Trading",             "sortOrder": 4, "description": "Acquiring the fuel required for generation and executing financial trades for risk management (hedging) and profit." },
+
+  /* ── Domain 15: Grid Operation ── */
+  { "id": 88, "title": "Grid Operation Strategy Management",          "domain": "Grid Operation",                          "sortOrder": 1, "description": "Developing the strategy for grid operation — determining priorities and strategies for how to respond to events." },
+  { "id": 89, "title": "Grid Monitoring and Control",                  "domain": "Grid Operation",                          "sortOrder": 2, "description": "Monitoring the topology, generation, voltage, active and reactive power flows, and frequency of the grid and controlling within applicable tolerances for optimal efficiency." },
+  { "id": 90, "title": "Grid Outage Management",                      "domain": "Grid Operation",                          "sortOrder": 3, "description": "Scheduling and approving planned operations on the grid and determining the cause and location of unplanned grid outages, then effecting the response to those outages." },
+  { "id": 91, "title": "Reliability Management",                      "domain": "Grid Operation",                          "sortOrder": 4, "description": "Determining the courses of action to manage the grid reliably — identifying and mitigating potential problems." },
+  { "id": 92, "title": "Resource Scheduling and Dispatch",            "domain": "Grid Operation",                          "sortOrder": 5, "description": "Scheduling and dispatching resources to balance supply and demand." },
+  { "id": 93, "title": "DER Management",                              "domain": "Grid Operation",                          "sortOrder": 6, "description": "Monitoring status, developing forecasts, and scheduling for DER devices or aggregations, and issuing control commands to utility-owned or third-party-controlled assets." },
+  { "id": 94, "title": "Reliability Coordination",                    "domain": "Grid Operation",                          "sortOrder": 7, "description": "Providing the Reliability Coordinator role as described by NERC." },
+
+  /* ── Domain 16: Energy Market Management ── */
+  { "id": 95, "title": "Energy Market Design",                        "domain": "Energy Market Management",                "sortOrder": 1, "description": "Determining what products and services will be offered for entities to participate in the energy market." },
+  { "id": 96, "title": "Energy Market Operation",                     "domain": "Energy Market Management",                "sortOrder": 2, "description": "Opening, executing, and clearing markets for energy and related products." },
+  { "id": 97, "title": "Energy Market Settlements",                   "domain": "Energy Market Management",                "sortOrder": 3, "description": "Determining after the fact how participating entities performed and paying for said participation." },
+  { "id": 98, "title": "Energy Market Monitoring",                    "domain": "Energy Market Management",                "sortOrder": 4, "description": "Monitoring participant response to market products and services in effect, and monitoring markets for products that the organization may decide to take advantage of." },
+  { "id": 99, "title": "Participant and Resource Registration",        "domain": "Energy Market Management",                "sortOrder": 5, "description": "Registering market participants and associated energy resources, confirming ownership and financial and physical attributes, and securely sharing as appropriate." },
+
+  /* ── Domain 17: Water Operations ── */
+  { "id": 100, "title": "Watershed Management",                       "domain": "Water Operations",                        "sortOrder": 1, "description": "Managing a watershed — estimating inflows, minimizing losses, and assigning allocations to water rights." },
+  { "id": 101, "title": "Water Delivery Management",                  "domain": "Water Operations",                        "sortOrder": 2, "description": "Scheduling and delivering water above the required quality." },
+  { "id": 102, "title": "Water Storage Management",                   "domain": "Water Operations",                        "sortOrder": 3, "description": "Filling, storing, and releasing water as required." },
+  { "id": 103, "title": "Water System Engineering",                   "domain": "Water Operations",                        "sortOrder": 4, "description": "Building and constructing the facilities required to effectively monitor and carry water to its required delivery points." },
+  { "id": 104, "title": "Canal Operation",                            "domain": "Water Operations",                        "sortOrder": 5, "description": "Operating canals for water level and transit." },
+  { "id": 105, "title": "Flood Control",                              "domain": "Water Operations",                        "sortOrder": 6, "description": "Planning for and responding to floods." },
+
+  /* ── Domain 18: Enterprise Data Management ── */
+  { "id": 106, "title": "Data Management Strategy",                   "domain": "Enterprise Data Management",              "sortOrder": 1, "description": "Developing, updating, and disseminating the motivation, goals, and outcomes of data management, the courses of action, and the key capabilities required to achieve results." },
+  { "id": 107, "title": "Data Governance",                            "domain": "Enterprise Data Management",              "sortOrder": 2, "description": "Defining standards, policies, and procedures that protect, control, and appropriately disseminate data owned or held in trust. Implementing monitoring and oversight to ensure adhesion to policies." },
+  { "id": 108, "title": "Data Architecture",                          "domain": "Enterprise Data Management",              "sortOrder": 3, "description": "Defining the meaning and relationships of data in the organization. Identifies data domains, documents metadata, defines critical data elements, and establishes taxonomies." },
+  { "id": 109, "title": "Data Quality Management",                    "domain": "Enterprise Data Management",              "sortOrder": 4, "description": "Defining appropriate metrics and measurement techniques to measure data quality. Managing the continual update and dissemination of metrics and monitoring for unacceptable results." },
+  { "id": 110, "title": "Data Operations",                            "domain": "Enterprise Data Management",              "sortOrder": 5, "description": "Managing the storage and transport of any data throughout its lifecycle, meeting access and performance requirements for processing, analytics, archiving, and disposal." },
+  { "id": 111, "title": "Business Intelligence",                      "domain": "Enterprise Data Management",              "sortOrder": 6, "description": "Providing decision support data and associated data manipulation technology, query, analysis, and reporting tools. Includes diagnostic and predictive analytics, data science, machine learning, and AI." }
 ];
 
+/* ── Capability → Application mappings ── */
 window.atlasData.capabilityApplications = [
-  {
-    "id": 1,
-    "capabilityId": 28,
-    "applicationId": 1
-  },
-  {
-    "id": 2,
-    "capabilityId": 27,
-    "applicationId": 1
-  },
-  {
-    "id": 3,
-    "capabilityId": 29,
-    "applicationId": 1
-  },
-  {
-    "id": 4,
-    "capabilityId": 35,
-    "applicationId": 2
-  },
-  {
-    "id": 5,
-    "capabilityId": 36,
-    "applicationId": 2
-  },
-  {
-    "id": 6,
-    "capabilityId": 37,
-    "applicationId": 2
-  },
-  {
-    "id": 7,
-    "capabilityId": 56,
-    "applicationId": 3
-  },
-  {
-    "id": 8,
-    "capabilityId": 56,
-    "applicationId": 3
-  },
-  {
-    "id": 9,
-    "capabilityId": 8,
-    "applicationId": 4
-  },
-  {
-    "id": 10,
-    "capabilityId": 35,
-    "applicationId": 4
-  },
-  {
-    "id": 11,
-    "capabilityId": 9,
-    "applicationId": 4
-  },
-  {
-    "id": 12,
-    "capabilityId": 55,
-    "applicationId": 5
-  },
-  {
-    "id": 13,
-    "capabilityId": 55,
-    "applicationId": 5
-  },
-  {
-    "id": 14,
-    "capabilityId": 38,
-    "applicationId": 6
-  },
-  {
-    "id": 15,
-    "capabilityId": 39,
-    "applicationId": 6
-  },
-  {
-    "id": 16,
-    "capabilityId": 40,
-    "applicationId": 6
-  },
-  {
-    "id": 17,
-    "capabilityId": 41,
-    "applicationId": 6
-  },
-  {
-    "id": 18,
-    "capabilityId": 56,
-    "applicationId": 7
-  },
-  {
-    "id": 19,
-    "capabilityId": 53,
-    "applicationId": 7
-  },
-  {
-    "id": 20,
-    "capabilityId": 55,
-    "applicationId": 8
-  },
-  {
-    "id": 21,
-    "capabilityId": 18,
-    "applicationId": 9
-  },
-  {
-    "id": 22,
-    "capabilityId": 19,
-    "applicationId": 9
-  },
-  {
-    "id": 23,
-    "capabilityId": 22,
-    "applicationId": 9
-  },
-  {
-    "id": 24,
-    "capabilityId": 19,
-    "applicationId": 10
-  },
-  {
-    "id": 25,
-    "capabilityId": 45,
-    "applicationId": 11
-  },
-  {
-    "id": 26,
-    "capabilityId": 53,
-    "applicationId": 11
-  },
-  {
-    "id": 27,
-    "capabilityId": 34,
-    "applicationId": 12
-  },
-  {
-    "id": 28,
-    "capabilityId": 33,
-    "applicationId": 12
-  },
-  {
-    "id": 29,
-    "capabilityId": 55,
-    "applicationId": 13
-  },
-  {
-    "id": 30,
-    "capabilityId": 55,
-    "applicationId": 14
-  },
-  {
-    "id": 31,
-    "capabilityId": 7,
-    "applicationId": 15
-  },
-  {
-    "id": 32,
-    "capabilityId": 14,
-    "applicationId": 15
-  },
-  {
-    "id": 33,
-    "capabilityId": 53,
-    "applicationId": 16
-  },
-  {
-    "id": 34,
-    "capabilityId": 30,
-    "applicationId": 16
-  },
-  {
-    "id": 35,
-    "capabilityId": 1,
-    "applicationId": 17
-  },
-  {
-    "id": 36,
-    "capabilityId": 14,
-    "applicationId": 17
-  },
-  {
-    "id": 37,
-    "capabilityId": 10,
-    "applicationId": 17
-  },
-  {
-    "id": 38,
-    "capabilityId": 55,
-    "applicationId": 18
-  },
-  {
-    "id": 39,
-    "capabilityId": 43,
-    "applicationId": 19
-  },
-  {
-    "id": 40,
-    "capabilityId": 42,
-    "applicationId": 19
-  },
-  {
-    "id": 41,
-    "capabilityId": 44,
-    "applicationId": 19
-  }
+  { "id": 1,  "capabilityId": 26,  "applicationId": 1  },
+  { "id": 2,  "capabilityId": 27,  "applicationId": 1  },
+  { "id": 3,  "capabilityId": 28,  "applicationId": 1  },
+  { "id": 4,  "capabilityId": 46,  "applicationId": 2  },
+  { "id": 5,  "capabilityId": 47,  "applicationId": 2  },
+  { "id": 6,  "capabilityId": 50,  "applicationId": 2  },
+  { "id": 7,  "capabilityId": 48,  "applicationId": 2  },
+  { "id": 8,  "capabilityId": 58,  "applicationId": 3  },
+  { "id": 9,  "capabilityId": 59,  "applicationId": 3  },
+  { "id": 10, "capabilityId": 61,  "applicationId": 3  },
+  { "id": 11, "capabilityId": 47,  "applicationId": 4  },
+  { "id": 12, "capabilityId": 29,  "applicationId": 4  },
+  { "id": 13, "capabilityId": 17,  "applicationId": 5  },
+  { "id": 14, "capabilityId": 64,  "applicationId": 5  },
+  { "id": 15, "capabilityId": 20,  "applicationId": 5  },
+  { "id": 16, "capabilityId": 36,  "applicationId": 6  },
+  { "id": 17, "capabilityId": 41,  "applicationId": 6  },
+  { "id": 18, "capabilityId": 39,  "applicationId": 6  },
+  { "id": 19, "capabilityId": 6,   "applicationId": 7  },
+  { "id": 20, "capabilityId": 32,  "applicationId": 7  },
+  { "id": 21, "capabilityId": 33,  "applicationId": 7  },
+  { "id": 22, "capabilityId": 89,  "applicationId": 8  },
+  { "id": 23, "capabilityId": 90,  "applicationId": 8  },
+  { "id": 24, "capabilityId": 93,  "applicationId": 8  },
+  { "id": 30, "capabilityId": 59,  "applicationId": 11 },
+  { "id": 31, "capabilityId": 89,  "applicationId": 11 },
+  { "id": 32, "capabilityId": 81,  "applicationId": 11 },
+  { "id": 33, "capabilityId": 30,  "applicationId": 12 },
+  { "id": 34, "capabilityId": 31,  "applicationId": 12 },
+  { "id": 35, "capabilityId": 34,  "applicationId": 12 },
+  { "id": 36, "capabilityId": 70,  "applicationId": 13 },
+  { "id": 37, "capabilityId": 39,  "applicationId": 13 },
+  { "id": 40, "capabilityId": 101, "applicationId": 15 },
+  { "id": 41, "capabilityId": 102, "applicationId": 15 },
+  { "id": 42, "capabilityId": 103, "applicationId": 15 },
+  { "id": 43, "capabilityId": 48,  "applicationId": 16 },
+  { "id": 44, "capabilityId": 11,  "applicationId": 16 },
+  { "id": 45, "capabilityId": 61,  "applicationId": 16 },
+  { "id": 48, "capabilityId": 107, "applicationId": 18 },
+  { "id": 49, "capabilityId": 40,  "applicationId": 18 },
+  { "id": 50, "capabilityId": 61,  "applicationId": 19 },
+  { "id": 51, "capabilityId": 24,  "applicationId": 19 },
+  { "id": 52, "capabilityId": 25,  "applicationId": 19 }
 ];
 
+/* ── Capability maturity scores (illustrative) ── */
 window.atlasData.capabilityMaturity = [
-  {
-    "id": 1,
-    "capabilityId": 1,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 2,
-    "capabilityId": 2,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 3,
-    "capabilityId": 3,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 4,
-    "capabilityId": 4,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 5,
-    "capabilityId": 5,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 6,
-    "capabilityId": 6,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 7,
-    "capabilityId": 7,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 8,
-    "capabilityId": 8,
-    "view": "overall",
-    "score": 5,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 9,
-    "capabilityId": 9,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 10,
-    "capabilityId": 10,
-    "view": "overall",
-    "score": 5,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 11,
-    "capabilityId": 11,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 12,
-    "capabilityId": 12,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 13,
-    "capabilityId": 13,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 14,
-    "capabilityId": 14,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 15,
-    "capabilityId": 15,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 16,
-    "capabilityId": 16,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 17,
-    "capabilityId": 17,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 18,
-    "capabilityId": 18,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 19,
-    "capabilityId": 19,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 20,
-    "capabilityId": 20,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 21,
-    "capabilityId": 21,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 22,
-    "capabilityId": 22,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 23,
-    "capabilityId": 23,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 24,
-    "capabilityId": 24,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 25,
-    "capabilityId": 25,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 26,
-    "capabilityId": 26,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 27,
-    "capabilityId": 27,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 28,
-    "capabilityId": 28,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 29,
-    "capabilityId": 29,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 30,
-    "capabilityId": 30,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 31,
-    "capabilityId": 31,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 32,
-    "capabilityId": 32,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 33,
-    "capabilityId": 33,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 34,
-    "capabilityId": 34,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 35,
-    "capabilityId": 35,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 36,
-    "capabilityId": 36,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 37,
-    "capabilityId": 37,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 38,
-    "capabilityId": 38,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 39,
-    "capabilityId": 39,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 40,
-    "capabilityId": 40,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 41,
-    "capabilityId": 41,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 42,
-    "capabilityId": 42,
-    "view": "overall",
-    "score": 5,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 43,
-    "capabilityId": 43,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 44,
-    "capabilityId": 44,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 45,
-    "capabilityId": 45,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 46,
-    "capabilityId": 46,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 47,
-    "capabilityId": 47,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 48,
-    "capabilityId": 48,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 49,
-    "capabilityId": 49,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 50,
-    "capabilityId": 50,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 51,
-    "capabilityId": 51,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 52,
-    "capabilityId": 52,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 53,
-    "capabilityId": 53,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 54,
-    "capabilityId": 54,
-    "view": "overall",
-    "score": 4,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 55,
-    "capabilityId": 55,
-    "view": "overall",
-    "score": 3,
-    "assessedDate": "2026-01-15"
-  },
-  {
-    "id": 56,
-    "capabilityId": 56,
-    "view": "overall",
-    "score": 2,
-    "assessedDate": "2026-01-15"
-  }
+  { "id": 1,   "capabilityId": 1,   "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 2,   "capabilityId": 2,   "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 3,   "capabilityId": 3,   "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 4,   "capabilityId": 4,   "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 5,   "capabilityId": 5,   "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 6,   "capabilityId": 6,   "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 7,   "capabilityId": 7,   "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 8,   "capabilityId": 8,   "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 9,   "capabilityId": 9,   "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 10,  "capabilityId": 10,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 11,  "capabilityId": 11,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 12,  "capabilityId": 12,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 13,  "capabilityId": 13,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 14,  "capabilityId": 14,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 15,  "capabilityId": 15,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 16,  "capabilityId": 16,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 17,  "capabilityId": 17,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 18,  "capabilityId": 18,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 19,  "capabilityId": 19,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 20,  "capabilityId": 20,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 21,  "capabilityId": 21,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 22,  "capabilityId": 22,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 23,  "capabilityId": 23,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 24,  "capabilityId": 24,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 25,  "capabilityId": 25,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 26,  "capabilityId": 26,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 27,  "capabilityId": 27,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 28,  "capabilityId": 28,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 29,  "capabilityId": 29,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 30,  "capabilityId": 30,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 31,  "capabilityId": 31,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 32,  "capabilityId": 32,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 33,  "capabilityId": 33,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 34,  "capabilityId": 34,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 35,  "capabilityId": 35,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 36,  "capabilityId": 36,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 37,  "capabilityId": 37,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 38,  "capabilityId": 38,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 39,  "capabilityId": 39,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 40,  "capabilityId": 40,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 41,  "capabilityId": 41,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 42,  "capabilityId": 42,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 43,  "capabilityId": 43,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 44,  "capabilityId": 44,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 45,  "capabilityId": 45,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 46,  "capabilityId": 46,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 47,  "capabilityId": 47,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 48,  "capabilityId": 48,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 49,  "capabilityId": 49,  "view": "overall", "score": 5, "assessedDate": "2025-11-01" },
+  { "id": 50,  "capabilityId": 50,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 51,  "capabilityId": 51,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 52,  "capabilityId": 52,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 53,  "capabilityId": 53,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 54,  "capabilityId": 54,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 55,  "capabilityId": 55,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 56,  "capabilityId": 56,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 57,  "capabilityId": 57,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 58,  "capabilityId": 58,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 59,  "capabilityId": 59,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 60,  "capabilityId": 60,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 61,  "capabilityId": 61,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 62,  "capabilityId": 62,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 63,  "capabilityId": 63,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 64,  "capabilityId": 64,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 65,  "capabilityId": 65,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 66,  "capabilityId": 66,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 67,  "capabilityId": 67,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 68,  "capabilityId": 68,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 69,  "capabilityId": 69,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 70,  "capabilityId": 70,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 71,  "capabilityId": 71,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 72,  "capabilityId": 72,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 73,  "capabilityId": 73,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 74,  "capabilityId": 74,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 75,  "capabilityId": 75,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 76,  "capabilityId": 76,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 77,  "capabilityId": 77,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 78,  "capabilityId": 78,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 79,  "capabilityId": 79,  "view": "overall", "score": 5, "assessedDate": "2025-11-01" },
+  { "id": 80,  "capabilityId": 80,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 81,  "capabilityId": 81,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 82,  "capabilityId": 82,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 83,  "capabilityId": 83,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 84,  "capabilityId": 84,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 85,  "capabilityId": 85,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 86,  "capabilityId": 86,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 87,  "capabilityId": 87,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 88,  "capabilityId": 88,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 89,  "capabilityId": 89,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 90,  "capabilityId": 90,  "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 91,  "capabilityId": 91,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 92,  "capabilityId": 92,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 93,  "capabilityId": 93,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 94,  "capabilityId": 94,  "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 95,  "capabilityId": 95,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 96,  "capabilityId": 96,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 97,  "capabilityId": 97,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 98,  "capabilityId": 98,  "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 99,  "capabilityId": 99,  "view": "overall", "score": 1, "assessedDate": "2025-11-01" },
+  { "id": 100, "capabilityId": 100, "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 101, "capabilityId": 101, "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 102, "capabilityId": 102, "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 103, "capabilityId": 103, "view": "overall", "score": 4, "assessedDate": "2025-11-01" },
+  { "id": 104, "capabilityId": 104, "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 105, "capabilityId": 105, "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 106, "capabilityId": 106, "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 107, "capabilityId": 107, "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 108, "capabilityId": 108, "view": "overall", "score": 2, "assessedDate": "2025-11-01" },
+  { "id": 109, "capabilityId": 109, "view": "overall", "score": 1, "assessedDate": "2025-11-01" },
+  { "id": 110, "capabilityId": 110, "view": "overall", "score": 3, "assessedDate": "2025-11-01" },
+  { "id": 111, "capabilityId": 111, "view": "overall", "score": 3, "assessedDate": "2025-11-01" }
 ];

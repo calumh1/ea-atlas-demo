@@ -2,13 +2,13 @@
    ATLAS · base tokens
    ========================================================= */
 :root {
-  /* Liberty palette */
-  --liberty-purple:  #7C4DFF;
-  --liberty-cyan:    #05CFFF;
-  --liberty-green:   #71E023;
-  --liberty-yellow:  #FEDD00;
-  --liberty-orange:  #FF9100;
-  --liberty-pink:    #FF3880;
+  /* CanTor palette */
+  --cantor-purple:  #7C4DFF;
+  --cantor-cyan:    #05CFFF;
+  --cantor-green:   #71E023;
+  --cantor-yellow:  #FEDD00;
+  --cantor-orange:  #FF9100;
+  --cantor-pink:    #FF3880;
 
   --header-bg: #080808;
   --header-fg: #ffffff;
@@ -22,7 +22,7 @@
   --ink:       #1a1d29;
   --ink-2:     #4a4f5e;
   --ink-3:     #7a7f8e;
-  --accent:    var(--liberty-purple);
+  --accent:    var(--cantor-purple);
 
   /* heatmap (count-based) */
   --hm-none:    #eef0f4;
@@ -80,7 +80,7 @@ a { color: var(--accent); }
 .brand-logo { width: 44px; height: 44px; border-radius: 8px; background: white; padding: 2px; }
 .brand-title {
   font-size: 22px; font-weight: 700; letter-spacing: 1.5px;
-  background: linear-gradient(90deg, #b6a3ff 0%, #6ee0ff 50%, #c2f59c 100%);
+  background: linear-gradient(90deg, #b6a3ff 0%, #6ee0ff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .brand-sub  { font-size: 11px; color: #b8bccb; letter-spacing: 1.2px; text-transform: uppercase; }
@@ -91,7 +91,7 @@ a { color: var(--accent); }
 
 .brand-bar {
   height: 4px;
-  background: linear-gradient(90deg, #7C4DFF 0%, #05CFFF 50%, #71E023 100%);
+  background: linear-gradient(90deg, #7C4DFF 0%, #05CFFF 100%);
 }
 
 /* =========================================================
@@ -442,7 +442,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 .pill.lc-not       { background: #4a4f5e; color: white; }
 .pill.lc-pending   { background: #ffe1c4; color: #964b00; }
 
-.pill.tier-1 { background: var(--liberty-purple); color: white; }
+.pill.tier-1 { background: var(--cantor-purple); color: white; }
 .pill.tier-2 { background: #efe7ff; color: #5a2eda; }
 .pill.tier-3 { background: #eef0f4; color: var(--ink-2); }
 .pill.tier-4 { background: #f6f7fb; color: var(--ink-3); }
@@ -527,7 +527,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   box-shadow: var(--shadow-1);
 }
 .tax-service.active { background: var(--accent); color: white; border-color: var(--accent); }
-.tax-service.search-hit { outline: 2px solid var(--liberty-yellow); outline-offset: -2px; }
+.tax-service.search-hit { outline: 2px solid var(--cantor-yellow); outline-offset: -2px; }
 .tax-service-count {
   font-size: 10px;
   font-weight: 700;
@@ -616,8 +616,8 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   border-left: 4px solid var(--ink-3);
 }
 .debt-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-2); }
-.debt-card.kind-debt        { border-left-color: var(--liberty-pink); }
-.debt-card.kind-enhancement { border-left-color: var(--liberty-cyan); }
+.debt-card.kind-debt        { border-left-color: var(--cantor-pink); }
+.debt-card.kind-enhancement { border-left-color: var(--cantor-cyan); }
 .debt-card-head {
   display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
   margin-bottom: 6px;
@@ -635,9 +635,9 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   font-size: 14px;
   color: var(--ink);
 }
-.debt-score.s-high { color: var(--liberty-pink); }
-.debt-score.s-med  { color: var(--liberty-orange); }
-.debt-score.s-low  { color: var(--liberty-green); }
+.debt-score.s-high { color: var(--cantor-pink); }
+.debt-score.s-med  { color: var(--cantor-orange); }
+.debt-score.s-low  { color: var(--cantor-green); }
 
 /* =========================================================
    Roadmap
@@ -722,16 +722,16 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   box-shadow: 0 1px 4px rgba(0,0,0,.12);
 }
 .roadmap-bar:hover { filter: brightness(1.05); transform: translateY(-50%) translateY(-1px); }
-.roadmap-bar.tier-1 { background: var(--liberty-purple); }
-.roadmap-bar.tier-2 { background: var(--liberty-cyan); color: #003c4d; }
-.roadmap-bar.tier-3 { background: var(--liberty-green); color: #1f3a00; }
+.roadmap-bar.tier-1 { background: var(--cantor-purple); }
+.roadmap-bar.tier-2 { background: var(--cantor-cyan); color: #003c4d; }
+.roadmap-bar.tier-3 { background: var(--cantor-green); color: #1f3a00; }
 .roadmap-bar.st-withdrawn { background: var(--ink-3); }
 .roadmap-bar.st-proposed { opacity: .65; border: 1px dashed white; }
 
 .roadmap-eol {
   position: absolute;
   top: 0; bottom: 0;
-  border-left: 2px solid var(--liberty-pink);
+  border-left: 2px solid var(--cantor-pink);
   width: 0;
   pointer-events: none;
 }
@@ -741,7 +741,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   top: 2px;
   left: 4px;
   font-size: 10px;
-  color: var(--liberty-pink);
+  color: var(--cantor-pink);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -769,6 +769,17 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 /* =========================================================
    Stub sections
    ========================================================= */
+.demo-banner {
+  background: rgba(255, 145, 0, 0.12);
+  border-bottom: 1px solid rgba(255, 145, 0, 0.35);
+  color: #c47a10;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 7px 24px;
+  text-align: center;
+}
+
 .demo-notice {
   background: rgba(254, 221, 0, 0.10);
   border: 1px solid rgba(254, 221, 0, 0.45);
@@ -801,7 +812,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   font-size: 11.5px;
   color: var(--ink-3);
 }
-.env-tag strong { color: var(--liberty-purple); }
+.env-tag strong { color: var(--cantor-purple); }
 
 /* =========================================================
    Strategies view
@@ -875,7 +886,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   color: var(--ink-2);
   white-space: nowrap;
 }
-.s-badge--status { background: rgba(124,77,255,.15); color: var(--liberty-purple); }
+.s-badge--status { background: rgba(124,77,255,.15); color: var(--cantor-purple); }
 .strategy-desc {
   font-size: 13px;
   color: var(--ink-2);
@@ -926,7 +937,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  background: linear-gradient(90deg, #a67cff 0%, #05cfff 55%, #71e023 100%);
+  background: linear-gradient(90deg, #a67cff 0%, #05cfff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
   margin: 0 0 4px;
 }

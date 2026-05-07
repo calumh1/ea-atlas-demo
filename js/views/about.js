@@ -10,7 +10,7 @@
         <h1 class="about-title">EA ATLAS</h1>
         <p class="about-tagline">Architecture, Technology Landscapes and Solutions</p>
         <p class="about-intro">
-          EA ATLAS is the Liberty Utilities Enterprise Architecture tool. It provides a single,
+          EA ATLAS is the CanTor Utilities Enterprise Architecture tool. It provides a single,
           authoritative view of the organization's business strategies and capabilities,
           application landscape, technology standards, roadmaps, and how they interact.
         </p>
@@ -28,7 +28,7 @@
           <div class="about-card-body">
             <div class="about-card-title">Strategies</div>
             <p class="about-card-desc">
-              Liberty's enterprise strategies and the initiatives that deliver them.
+              CanTor's enterprise strategies and the initiatives that deliver them.
               These top-level strategic priorities set the direction for change and drive
               priorities. Visibility of these strategies is key to their success — from
               there they can be mapped to the business capabilities, applications,
@@ -42,7 +42,7 @@
           <div class="about-card-body">
             <div class="about-card-title">Business Architecture</div>
             <p class="about-card-desc">
-              The Liberty Business Capability Model shows what Liberty does — what
+              The CanTor Business Capability Model shows what CanTor does — what
               capabilities the business has. This view is mapped to strategies,
               applications, technology, and projects to show where we have duplication,
               where we need to mature to meet our strategies, and what technology
@@ -58,7 +58,7 @@
           <div class="about-card-body">
             <div class="about-card-title">Application Architecture</div>
             <p class="about-card-desc">
-              The application inventory shows the applications Liberty uses to deliver
+              The application inventory shows the applications CanTor uses to deliver
               its strategies and capabilities. The list can be filtered by tier,
               lifecycle status, End of Life, or capability. This forms the basis for
               rationalization and investment decisions.
@@ -71,7 +71,7 @@
           <div class="about-card-body">
             <div class="about-card-title">Technology Architecture</div>
             <p class="about-card-desc">
-              The Liberty Technology Taxonomy is a structured view of the technology
+              The CanTor Technology Taxonomy is a structured view of the technology
               that enables our applications — infrastructure, middleware, data services,
               end user computing, and security. This taxonomy can be used to understand
               the standards that apply to our technology, the technical debt landscape,

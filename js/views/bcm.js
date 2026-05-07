@@ -23,10 +23,12 @@
     state.selectedCapId = null;
 
     host.innerHTML = `
-      ${state.mode === 'maturity' ? `
       <div class="demo-notice">
-        Maturity scores shown here are illustrative dummy data for demonstration purposes only and do not reflect assessed capability maturity.
-      </div>` : ''}
+        This view is based on the <strong>EPRI Utility Business Capability Model</strong>.
+        Domains and capabilities can be customized for your organization's own BCM.
+        ${state.mode === 'maturity' ? 'Maturity scores shown are illustrative only.' : ''}
+        ${state.mode === 'application' || state.mode === 'eol' ? 'Application mappings shown are representative demo data.' : ''}
+      </div>
       <div id="bcm-stats" class="stats-bar"></div>
       <div id="bcm-body"></div>
       <div id="bcm-legend" class="legend"></div>
@@ -126,9 +128,10 @@
 
     const renderDomainGroup = (typeFilter, label) => {
       const ds = domains.filter(d => d.type === typeFilter).sort((a, b) => a.sortOrder - b.sortOrder);
+      const cols = typeFilter === 'Core' ? ds.length : Math.ceil(ds.length / 2);
       const html = `
         <div class="bcm-section-label">${label}</div>
-        <div class="bcm-grid">
+        <div class="bcm-grid" style="grid-template-columns: repeat(${cols}, 1fr)">
           ${ds.map(d => domainCard(d, capabilities)).join('')}
         </div>
       `;

@@ -312,27 +312,27 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Microsoft ALM",
+    "Title": "Jira (Zephyr Scale)",
     "Service": "Testing & Defect Mgmt",
     "LifecycleStatus": "Core",
-    "Description": "Microsoft Application Lifecycle Management for test management.",
+    "Description": "Jira-based test management using Zephyr Scale.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "Worksoft",
+    "Title": "Tricentis Tosca",
     "Service": "Testing & Defect Mgmt",
     "LifecycleStatus": "Core",
-    "Description": "Automated testing tool for SAP.",
+    "Description": "Automated testing platform for SAP and enterprise applications.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "Loadrunner / Stormrunner",
+    "Title": "NeoLoad",
     "Service": "Testing & Defect Mgmt",
     "LifecycleStatus": "Core",
     "Description": "Load and performance testing platform.",
@@ -352,10 +352,10 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Service Hub",
+    "Title": "IT Service Tool",
     "Service": "IT Service Management",
     "LifecycleStatus": "Core",
-    "Description": "IFS Assyst â€” current primary ITSM platform.",
+    "Description": "Legacy ITSM platform - current primary for incident and change management.",
     "StrategyAlignment": "Maintain for current incident and change management. Migrate workloads to ServiceNow through 2025-2026.",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
@@ -422,10 +422,10 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "TBD",
+    "Title": "Dynatrace",
     "Service": "Application Monitoring",
-    "LifecycleStatus": "Pending",
-    "Description": "Standards not yet defined. Platform selection in progress.",
+    "LifecycleStatus": "Emerging",
+    "Description": "Application performance monitoring and observability platform.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
@@ -462,7 +462,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "PingOne",
+    "Title": "Okta",
     "Service": "Identity & Permission Management",
     "LifecycleStatus": "Core",
     "Description": "Cloud identity platform.",
@@ -475,14 +475,14 @@ window.atlasData.technologies = [
     "Title": "Single Sign On",
     "Service": "Identity & Permission Management",
     "LifecycleStatus": "Core",
-    "Description": "SSO capability delivered via Ping stack.",
+    "Description": "SSO capability delivered via Okta.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "Ping-Federate",
+    "Title": "Okta Federation",
     "Service": "Identity & Permission Management",
     "LifecycleStatus": "Special Use",
     "Description": "Federation server for specific external integrations.",
@@ -492,7 +492,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "PingID",
+    "Title": "Okta MFA",
     "Service": "Identity & Permission Management",
     "LifecycleStatus": "Core",
     "Description": "Multi-factor authentication platform.",
@@ -692,7 +692,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "MoveIT sFTP",
+    "Title": "GoAnywhere MFT",
     "Service": "Integration Management",
     "LifecycleStatus": "Core",
     "Description": "Managed file transfer platform for secure file-based integrations.",
@@ -715,14 +715,14 @@ window.atlasData.technologies = [
     "Title": "ADO (Advanced DevOps)",
     "Service": "Integration Management",
     "LifecycleStatus": "Core",
-    "Description": "Used for C1 project integration workflows.",
+    "Description": "Used for select project integration workflows.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "MoveIT sFTP",
+    "Title": "GoAnywhere MFT",
     "Service": "File Transfer Services",
     "LifecycleStatus": "Core",
     "Description": "Managed file transfer â€” primary platform.",
@@ -776,7 +776,7 @@ window.atlasData.technologies = [
     "Service": "Analytics and Modelling",
     "LifecycleStatus": "Core",
     "Description": "Primary analytics and big data platform.",
-    "StrategyAlignment": "Build out Liberty Data Lake as the single analytics foundation. Migrate on-prem analytics workloads to Azure.",
+    "StrategyAlignment": "Build out CanTor Data Lake as the single analytics foundation. Migrate on-prem analytics workloads to Azure.",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
@@ -872,7 +872,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "e-HUB",
+    "Title": "Enterprise Archive",
     "Service": "Data Archiving",
     "LifecycleStatus": "Core",
     "Description": "Enterprise archiving platform for structured data.",
@@ -942,7 +942,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Avamar PowerProtect Data Manager",
+    "Title": "Veeam Backup & Replication",
     "Service": "Backup And Recovery",
     "LifecycleStatus": "Core",
     "Description": "Primary enterprise backup platform.",
@@ -962,7 +962,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Sentinel One",
+    "Title": "CrowdStrike Falcon",
     "Service": "Endpoint Threat Detection and Response",
     "LifecycleStatus": "Core",
     "Description": "Primary endpoint detection and response platform.",
@@ -975,7 +975,7 @@ window.atlasData.technologies = [
     "Title": "Cisco Secure EndPoint",
     "Service": "Endpoint Threat Detection and Response",
     "LifecycleStatus": "Declining",
-    "Description": "Being replaced by Sentinel One.",
+    "Description": "Being replaced by CrowdStrike Falcon.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
@@ -992,7 +992,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Sentinel One",
+    "Title": "CrowdStrike Falcon",
     "Service": "Server Threat Detection and Response",
     "LifecycleStatus": "Core",
     "Description": "Server EDR â€” same platform as endpoint for unified visibility.",
@@ -1032,7 +1032,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Qualys",
+    "Title": "Rapid7 InsightVM",
     "Service": "Vulnerability Management",
     "LifecycleStatus": "Core",
     "Description": "Primary vulnerability scanning and management platform.",
@@ -1112,7 +1112,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Citrix ADC",
+    "Title": "F5 BIG-IP",
     "Service": "Load Balancer Services",
     "LifecycleStatus": "Core",
     "Description": "Application delivery controller for load balancing and SSL offload.",
@@ -1182,7 +1182,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "VMware ESX v7.x",
+    "Title": "VMware ESXi",
     "Service": "Virtualization",
     "LifecycleStatus": "Core",
     "Description": "Primary hypervisor for on-premises virtualisation.",
@@ -1192,7 +1192,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "vCenter 7.x",
+    "Title": "VMware vCenter",
     "Service": "Virtualization",
     "LifecycleStatus": "Core",
     "Description": "VMware management platform.",
@@ -1212,7 +1212,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Dell PowerEdge 740",
+    "Title": "Dell PowerEdge Servers",
     "Service": "Physical Servers",
     "LifecycleStatus": "Core",
     "Description": "Primary on-premises server hardware.",
@@ -1332,7 +1332,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Cisco C9300 Switches",
+    "Title": "Cisco Catalyst Switches",
     "Service": "LAN",
     "LifecycleStatus": "Core",
     "Description": "Standard access and distribution layer switches.",
@@ -1442,17 +1442,17 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "FTD2000/4000",
+    "Title": "Fortinet FortiGate",
     "Service": "Firewall Services",
     "LifecycleStatus": "Core",
-    "Description": "Cisco Firepower Threat Defence â€” primary perimeter firewalls.",
+    "Description": "Fortinet FortiGate - primary perimeter firewalls.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "Cisco Catalyst 9000 Routers",
+    "Title": "Fortinet FortiGate Core",
     "Service": "Firewall Services",
     "LifecycleStatus": "Core",
     "Description": "Integrated firewall capability on edge routers.",
@@ -1462,7 +1462,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Cisco Catalyst 1000 Routers",
+    "Title": "Fortinet FortiGate Branch",
     "Service": "Firewall Services",
     "LifecycleStatus": "Core",
     "Description": "Integrated firewall on branch routers.",
@@ -1512,7 +1512,7 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "Toronto Colocation",
+    "Title": "Primary Colocation (CA)",
     "Service": "Datacenter Environmental",
     "LifecycleStatus": "Core",
     "Description": "Primary Canadian colocation facility.",
@@ -1522,10 +1522,10 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "NJ Colocation",
+    "Title": "Primary Colocation (US)",
     "Service": "Datacenter Environmental",
     "LifecycleStatus": "Core",
-    "Description": "Primary US east coast colocation facility.",
+    "Description": "Primary US colocation facility.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
@@ -1542,20 +1542,20 @@ window.atlasData.technologies = [
     "Notes": ""
   },
   {
-    "Title": "IBM Washington and Dallas",
+    "Title": "Legacy Managed Datacentres",
     "Service": "Datacenter Environmental",
     "LifecycleStatus": "Declining",
-    "Description": "Legacy IBM-hosted datacentres. Being exited.",
+    "Description": "Third-party hosted legacy datacentres. Being exited.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",
     "Notes": ""
   },
   {
-    "Title": "Joplin, MO",
+    "Title": "Legacy Regional Site",
     "Service": "Datacenter Environmental",
     "LifecycleStatus": "Declining",
-    "Description": "Legacy facility being decommissioned.",
+    "Description": "Legacy regional facility being decommissioned.",
     "StrategyAlignment": "",
     "ConfigStandardsURL": "",
     "SolutionArchitectureURL": "",

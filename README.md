@@ -1,19 +1,29 @@
 # ATLAS — Architecture, Technology, Landscape & Strategy
+  Demo copy using CanTor Utilities (fictional) data. No build step, no dependencies, no server required.
 
-Local prototype. Liberty-branded. No build step, no dependencies, no server required.
+## How to runthe EA-ATLAS
+  Double-click `index.html`. It opens in your browser and works entirely offline.
 
-## How to run
+  The data layer doesn't use ES modules, so the `file://` protocol works without spinning up a server. If you'd rather serve it (e.g. for testing the SharePoint swap below), `python -m http.server` from this folder works fine.
 
-Double-click `index.html`. It opens in your browser and works entirely offline.
+## How to use the EA-ATLAS
 
-The data layer doesn't use ES modules, so the `file://` protocol works without spinning up a server. If you'd rather serve it (e.g. for testing the SharePoint swap below), `python -m http.server` from this folder works fine.
+  Enterprise architecture produces a lot of artefacts that live in spreadsheets and PowerPoints and never get looked at again. ATLAS is a graphical interface over that same data — the goal is to make relationships visible and keep the information accessible enough that people actually use it.
+
+  BCM (Business Capability Map) is the starting point. It describes what the business does, independent of how. Use the heatmap overlays to see where applications are concentrated — clusters often signal duplication worth rationalising — and where there are gaps where technology could be doing more.
+
+  Applications shows what we run and what's happening to it. Map an application to its supporting capabilities, see which projects are touching it, and get a clear picture of lifecycle risk — particularly useful when an end-of-life date is looming and multiple projects are depending on the platform surviving.
+
+  Technology Standards is the reference layer for anyone designing or building something new. Before choosing a technology, check here first — reuse what we've already standardised, and flag it when a project is about to introduce something that duplicates an existing capability. Over time, this view also surfaces rationalisation opportunities where we've accumulated multiple tools doing the same job.
+
+  Projects gives a portfolio-level view of what's in flight and how it connects to the capability landscape. Use it to see where projects overlap, which capabilities are under the most change pressure, and how delivery timelines interact with technology end-of-life constraints. Two projects targeting the same capability without knowing about each other is an architecture problem — this view makes that visible before it becomes a delivery problem.
 
 ## What's in here
 
 | Path | Purpose |
 |---|---|
 | `index.html` | App shell + script load order |
-| `css/styles.css` | All styling. Liberty palette + ATLAS branding tokens at the top. |
+| `css/styles.css` | All styling. CanTor palette + ATLAS branding tokens at the top. |
 | `js/app.js` | Two-tier nav router and the shared detail-panel helper (`atlasUI.openPanel`). |
 | `js/data.js` | **Data contract.** Every view talks to `window.atlasData` and nothing else. |
 | `js/data-embedded.js` | Today's source — JSON literals + mock mappings. |
@@ -45,7 +55,7 @@ window.atlasData = {
 
 Don't touch any view file. The footer's data-source label is wired to `atlasData.source`, so once you change it to `'sharepoint'` the UI reflects the live data source automatically.
 
-The SharePoint list schemas (column names and types) match `liberty_ea_sharepoint_lists.xlsx`.
+The SharePoint list schemas (column names and types) are defined in the `liberty_ea_sharepoint_lists.xlsx` template.
 
 ## What's mock vs real
 

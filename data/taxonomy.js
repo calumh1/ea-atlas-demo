@@ -466,7 +466,7 @@ window.atlasData.taxonomyServices = [
     "Title": "WAN",
     "Segment": "Network Segment",
     "SortOrder": 4,
-    "Description": "Wide area network connectivity linking Liberty Utilities sites. Covers MPLS circuits, SD-WAN, and inter-site routing."
+    "Description": "Wide area network connectivity linking CanTor Utilities sites. Covers MPLS circuits, SD-WAN, and inter-site routing."
   },
   {
     "Title": "Internet Access",
@@ -503,14 +503,14 @@ window.atlasData.taxonomyServices = [
     "Segment": "Hosting Segment",
     "SortOrder": 1,
     "Description": "Standards and patterns for hosting workloads in public cloud (Azure). Covers landing zone design, subscription structure, and cloud governance.",
-    "ConfigStandardsURL": "https://libertyutil.sharepoint.com/:f:/r/sites/CloudCentreofExcellence/Shared%20Documents/General/Approved%20Standards?csf=1&web=1&e=d3p8QT",
-    "SolutionArchitectureURL": "https://libertyutil.sharepoint.com/:f:/r/sites/EnterpriseArchitecturePublic/Shared%20Documents/General/Architecture%20Repository/Technology%20Architecture%20Documents/15%20-%20Hosting/Cloud%20Hosting?csf=1&web=1&e=kQ1PcN"
+    "ConfigStandardsURL": "",
+    "SolutionArchitectureURL": ""
   },
   {
     "Title": "Datacenter Environmental",
     "Segment": "Hosting Segment",
     "SortOrder": 2,
-    "Description": "Physical infrastructure within Liberty datacentres including power, cooling, and physical security. Underpins on-premise compute and network services."
+    "Description": "Physical infrastructure within CanTor Utilities datacentres including power, cooling, and physical security. Underpins on-premise compute and network services."
   },
   {
     "Title": "Office Environmental",
