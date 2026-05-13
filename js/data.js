@@ -44,7 +44,7 @@
       techDebt:              d.techDebt              || [],
       enterpriseStrategies:  d.enterpriseStrategies  || [],
       strategicInitiatives:  d.strategicInitiatives  || [],
-      strategyProjects:      d.strategyProjects      || [],
+      projectStrategies:     d.projectStrategies     || [],
     };
   }());
 
@@ -70,14 +70,14 @@
       techDebt()              { return this.getData('techDebt'); },
       enterpriseStrategies()  { return this.getData('enterpriseStrategies'); },
       strategicInitiatives()  { return this.getData('strategicInitiatives'); },
-      strategyProjects()      { return this.getData('strategyProjects'); },
+      projectStrategies()     { return this.getData('projectStrategies'); },
 
       async loadAll() {
         const keys = [
           'domains','capabilities','capabilityApplications','capabilityMaturity',
           'applications','taxonomySegments','taxonomyServices','technologies',
           'projects','projectCapabilities','projectApplications','techDebt',
-          'enterpriseStrategies','strategicInitiatives','strategyProjects'
+          'enterpriseStrategies','strategicInitiatives','projectStrategies'
         ];
         const vals = await Promise.all(keys.map(k => this.getData(k)));
         return Object.fromEntries(keys.map((k, i) => [k, vals[i]]));

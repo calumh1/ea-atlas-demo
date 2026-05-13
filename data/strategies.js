@@ -199,7 +199,7 @@ window.atlasData.strategicInitiatives = [
 ];
 
 /* Strategy → Project mappings */
-window.atlasData.strategyProjects = [
+window.atlasData.projectStrategies = [
   { "id": 1,  "strategyId": 2, "projectId": 8, "alignmentNote": "OT hardening directly reduces safety and cyber risk across the grid estate" },
   { "id": 2,  "strategyId": 2, "projectId": 6, "alignmentNote": "Maximo Mobile improves field crew safety visibility and emergency response speed" },
   { "id": 3,  "strategyId": 3, "projectId": 2, "alignmentNote": "ADMS Phase 2 enables real-time DER monitoring and control" },

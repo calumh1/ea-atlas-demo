@@ -5,7 +5,7 @@
   window.atlasViews = window.atlasViews || {};
 
   let cache = null;
-  let state = { kind: 'all', sort: 'risk', search: '' };
+  let state = { kind: 'all', sort: 'risk', dir: -1, search: '' };
 
   async function render(host) {
     cache = cache || await window.atlasData.loadAll();
@@ -23,26 +23,15 @@
             <button class="btn" data-k="debt">Debt</button>
             <button class="btn" data-k="enhancement">Enhancements</button>
           </div>
-          <select id="debt-sort">
-            <option value="risk">Sort: combined risk</option>
-            <option value="itRisk">Sort: IT risk</option>
-            <option value="businessRisk">Sort: Business risk</option>
-            <option value="dateLogged">Sort: Date logged</option>
-          </select>
         </div>
-      </div>
-
-      <div class="stub-banner">
-        <strong>Stub data.</strong> Tech debt records below are mock entries derived from declining-lifecycle technologies and EOL applications. The schema (item, kind, source, capability, IT risk, business risk, date logged, status) is the target shape — the SharePoint backing list will follow this structure.
       </div>
 
       <div id="debt-stats" class="stats-bar"></div>
 
-      <div class="debt-grid" id="debt-grid"></div>
+      <div class="data-table-wrap" id="debt-grid"></div>
     `;
 
     host.querySelector('#debt-search').oninput = e => { state.search = e.target.value.toLowerCase(); paint(); };
-    host.querySelector('#debt-sort').onchange = e => { state.sort = e.target.value; paint(); };
     host.querySelectorAll('#debt-kind .btn').forEach(b => {
       b.onclick = () => {
         host.querySelectorAll('#debt-kind .btn').forEach(x => x.classList.remove('active'));
@@ -94,37 +83,62 @@
     }
 
     rows.sort((a, b) => {
-      if (state.sort === 'risk')        return combinedRisk(b) - combinedRisk(a);
-      if (state.sort === 'itRisk')      return (b.itRisk || 0) - (a.itRisk || 0);
-      if (state.sort === 'businessRisk') return (b.businessRisk || 0) - (a.businessRisk || 0);
-      if (state.sort === 'dateLogged')  return (b.dateLogged || '').localeCompare(a.dateLogged || '');
-      return 0;
+      const av = state.sort === 'risk' ? combinedRisk(a) : a[state.sort];
+      const bv = state.sort === 'risk' ? combinedRisk(b) : b[state.sort];
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      if (typeof av === 'number') return (av - bv) * state.dir;
+      return String(av).localeCompare(String(bv)) * state.dir;
     });
 
-    const grid = document.getElementById('debt-grid');
-    grid.innerHTML = rows.map(x => `
-      <div class="debt-card kind-${x.kind}" data-id="${x.id}">
-        <div class="debt-card-head">
-          <div>
-            <div class="debt-card-title">${esc(x.title)}</div>
-            <div class="debt-card-source">${esc(x.sourceType)} · ${esc(x.source)}</div>
-          </div>
-          <span class="pill ${pillForStatus(x.status)}">${esc(x.status)}</span>
-        </div>
-        <div style="font-size:12.5px;color:var(--ink-2)">${esc(x.description)}</div>
-        <div class="debt-card-meta">
-          <span><span class="debt-score ${riskClass(x.itRisk)}">${x.itRisk}</span><br>IT risk</span>
-          <span><span class="debt-score ${riskClass(x.businessRisk)}">${x.businessRisk}</span><br>Biz risk</span>
-          <span style="margin-left:auto;text-align:right">
-            <span style="color:var(--ink)">${esc(x.capability)}</span><br>
-            ${esc(x.dateLogged)}
-          </span>
-        </div>
-      </div>
-    `).join('');
+    const sc = k => state.sort === k ? (state.dir === 1 ? 'sort-asc' : 'sort-desc') : '';
 
-    grid.querySelectorAll('.debt-card').forEach(card => {
-      card.onclick = () => openDetail(parseInt(card.dataset.id, 10));
+    const grid = document.getElementById('debt-grid');
+    grid.innerHTML = `
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th data-sort="title" class="${sc('title')}">Item</th>
+            <th data-sort="kind" class="${sc('kind')}">Type</th>
+            <th data-sort="source" class="${sc('source')}">Source</th>
+            <th data-sort="capability" class="${sc('capability')}">Capability</th>
+            <th data-sort="itRisk" class="${sc('itRisk')}" style="text-align:center">IT</th>
+            <th data-sort="businessRisk" class="${sc('businessRisk')}" style="text-align:center">Biz</th>
+            <th data-sort="risk" class="${sc('risk')}" style="text-align:center">Combined</th>
+            <th data-sort="status" class="${sc('status')}">Status</th>
+            <th data-sort="dateLogged" class="${sc('dateLogged')}">Logged</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(x => `
+            <tr data-id="${x.id}">
+              <td style="font-weight:600;max-width:260px">${esc(x.title)}</td>
+              <td><span style="font-size:11.5px;font-weight:500;color:${x.kind === 'debt' ? 'var(--cantor-pink)' : 'var(--cantor-cyan)'}">${x.kind === 'debt' ? 'Debt' : 'Enhancement'}</span></td>
+              <td style="color:var(--ink-2)">${esc(x.sourceType)} · ${esc(x.source)}</td>
+              <td style="color:var(--ink-2)">${esc(x.capability)}</td>
+              <td style="text-align:center"><span class="debt-score ${riskClass(x.itRisk)}">${x.itRisk}</span></td>
+              <td style="text-align:center"><span class="debt-score ${riskClass(x.businessRisk)}">${x.businessRisk}</span></td>
+              <td style="text-align:center"><span class="debt-score ${riskClass(Math.ceil(combinedRisk(x) / 2))}">${combinedRisk(x)}</span></td>
+              <td><span class="pill ${pillForStatus(x.status)}">${esc(x.status)}</span></td>
+              <td style="color:var(--ink-3);white-space:nowrap">${esc(x.dateLogged)}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+
+    grid.querySelectorAll('thead th[data-sort]').forEach(th => {
+      th.onclick = () => {
+        const s = th.dataset.sort;
+        if (state.sort === s) state.dir *= -1;
+        else { state.sort = s; state.dir = 1; }
+        paint();
+      };
+    });
+
+    grid.querySelectorAll('tbody tr').forEach(row => {
+      row.onclick = () => openDetail(parseInt(row.dataset.id, 10));
     });
   }
 
@@ -144,6 +158,31 @@
 
   function openDetail(id) {
     const x = cache.techDebt.find(d => d.id === id);
+
+    const tech = x.technologyTitle
+      ? cache.technologies.find(t => t.Title === x.technologyTitle)
+      : null;
+    const app = x.applicationId
+      ? cache.applications.find(a => a.id === x.applicationId)
+      : null;
+
+    const linkedSection = (tech || app) ? `
+      <div class="detail-section">
+        <div class="detail-section-label">Linked ${tech ? 'technology' : 'application'}</div>
+        ${tech ? `
+          <div class="detail-prose">
+            <strong>${esc(tech.Title)}</strong> <span style="color:var(--ink-3)">· ${esc(tech.Service)}</span><br>
+            <span class="pill lc-${lcClass(tech.LifecycleStatus)}" style="margin:6px 0;display:inline-block">${esc(tech.LifecycleStatus)}</span>
+            ${tech.StrategyAlignment ? `<br><span style="color:var(--ink-2);font-size:12.5px">${esc(tech.StrategyAlignment)}</span>` : ''}
+          </div>` : ''}
+        ${app ? `
+          <div class="detail-prose">
+            <strong>${esc(app.title)}</strong> <span style="color:var(--ink-3)">· ${esc(app.vendor || '')}</span><br>
+            <span class="pill tier-${app.eaTier}" style="margin:6px 0;display:inline-block">Tier ${app.eaTier}</span>
+            <span class="pill lc-${lcClass(app.lifecycleStatus)}" style="margin:6px 0 6px 4px;display:inline-block">${esc(app.lifecycleStatus)}</span>
+          </div>` : ''}
+      </div>` : '';
+
     window.atlasUI.openPanel({
       eyebrow: `${x.kind === 'debt' ? 'Tech debt' : 'Enhancement'} · ${x.sourceType}`,
       title: x.title,
@@ -154,6 +193,8 @@
           <span class="tag">${esc(x.capability)}</span>
         </div>
         <div class="detail-prose">${esc(x.description)}</div>
+
+        ${linkedSection}
 
         <div class="detail-section">
           <div class="detail-section-label">Risk scoring</div>
@@ -175,6 +216,17 @@
         </div>
       `
     });
+  }
+
+  function lcClass(s) {
+    if (!s) return 'pending';
+    const l = s.toLowerCase();
+    if (l === 'core')        return 'core';
+    if (l === 'emerging')    return 'emerging';
+    if (l === 'declining')   return 'declining';
+    if (l === 'special use') return 'special';
+    if (l === 'not permitted') return 'not';
+    return 'pending';
   }
 
   function esc(s) {

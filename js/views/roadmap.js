@@ -5,10 +5,13 @@
   window.atlasViews = window.atlasViews || {};
 
   let cache = null;
-  let state = { swim: 'program', startYear: 2025, endYear: 2027 };
+  let state = { swim: 'program', startYear: 2025, endYear: 2027, filterProgram: 'all', filterStatus: 'all' };
 
   async function render(host) {
     cache = cache || await window.atlasData.loadAll();
+
+    const programs = [...new Set(cache.projects.map(p => p.program))].sort();
+    const statuses = [...new Set(cache.projects.map(p => p.status))].sort();
 
     host.innerHTML = `
       <div class="view-header">
@@ -16,16 +19,21 @@
           <div class="btn-group" id="rm-swim">
             <button class="btn active" data-s="program">By programme</button>
             <button class="btn" data-s="capability">By capability</button>
+            <button class="btn" data-s="application">By application</button>
           </div>
+          <select id="rm-filter-program">
+            <option value="all">All programmes</option>
+            ${programs.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('')}
+          </select>
+          <select id="rm-filter-status">
+            <option value="all">All statuses</option>
+            ${statuses.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('')}
+          </select>
           <div class="btn-group">
             <button class="btn" id="rm-zoom-in">−</button>
             <button class="btn" id="rm-zoom-out">+</button>
           </div>
         </div>
-      </div>
-
-      <div class="stub-banner">
-        <strong>Mock layout.</strong> Project–capability and project–application links are illustrative. Once the SharePoint <code>ProjectCapabilities</code> and <code>ProjectApplications</code> lists are populated, this view reads from them directly. EOL markers are pulled from the application registry.
       </div>
 
       <div class="roadmap-wrap" id="rm-wrap"></div>
@@ -39,6 +47,14 @@
         paint();
       };
     });
+
+    const progSel = host.querySelector('#rm-filter-program');
+    const statSel = host.querySelector('#rm-filter-status');
+    progSel.value = state.filterProgram;
+    statSel.value = state.filterStatus;
+    progSel.onchange = () => { state.filterProgram = progSel.value; paint(); };
+    statSel.onchange = () => { state.filterStatus = statSel.value; paint(); };
+
     host.querySelector('#rm-zoom-in').onclick = () => {
       if (state.endYear - state.startYear > 1) state.endYear -= 1;
       paint();
@@ -66,7 +82,7 @@
     }
 
     // Build lanes
-    const lanes = state.swim === 'program' ? programLanes() : capabilityLanes();
+    const lanes = state.swim === 'program' ? programLanes() : state.swim === 'application' ? applicationLanes() : capabilityLanes();
     const laneRowsHtml = lanes.map(lane => {
       const positioned = positionBars(lane.projects);
       const trackCount = positioned.reduce((m, x) => Math.max(m, x.track + 1), 1);
@@ -88,11 +104,11 @@
     wrap.innerHTML = `
       <div class="roadmap-toolbar">
         <span style="color:var(--ink-3)">${state.startYear} → ${state.endYear}</span>
-        <span style="color:var(--ink-3);font-size:11.5px">${lanes.length} ${state.swim === 'program' ? 'programmes' : 'capabilities'} · ${lanes.reduce((s, l) => s + l.projects.length, 0)} project bars</span>
+        <span style="color:var(--ink-3);font-size:11.5px">${lanes.length} ${state.swim === 'program' ? 'programmes' : state.swim === 'application' ? 'applications' : 'capabilities'} · ${lanes.reduce((s, l) => s + l.projects.length, 0)} project bars</span>
       </div>
       <div class="roadmap-grid" style="--rm-cols:${cols}">
         <div class="roadmap-header">
-          <div class="roadmap-row-label" style="background:var(--surface-2)">${state.swim === 'program' ? 'Programme' : 'Capability'}</div>
+          <div class="roadmap-row-label" style="background:var(--surface-2)">${state.swim === 'program' ? 'Programme' : state.swim === 'application' ? 'Application' : 'Capability'}</div>
           <div class="roadmap-quarters">${headerCells.join('')}</div>
         </div>
         <div style="display:grid;grid-template-columns:220px 1fr;position:relative">
@@ -111,27 +127,62 @@
   }
 
   // ---------- lane builders ----------
+  function filteredProjects() {
+    return cache.projects.filter(p =>
+      (state.filterProgram === 'all' || p.program === state.filterProgram) &&
+      (state.filterStatus  === 'all' || p.status  === state.filterStatus)
+    );
+  }
+
   function programLanes() {
-    const programs = [...new Set(cache.projects.map(p => p.program))].sort();
+    const projects = filteredProjects();
+    const programs = [...new Set(projects.map(p => p.program))].sort();
     return programs.map(prog => {
-      const projects = cache.projects.filter(p => p.program === prog);
-      const eols = inferEolsForProjects(projects);
-      return { label: prog, title: prog, projects, eols };
+      const laneProjects = projects.filter(p => p.program === prog);
+      const eols = inferEolsForProjects(laneProjects);
+      return { label: prog, title: prog, projects: laneProjects, eols };
     });
   }
 
   function capabilityLanes() {
-    // Only include capabilities that have at least one project link
-    const linked = new Set(cache.projectCapabilities.map(pc => pc.capabilityId));
+    const projects = filteredProjects();
+    const filteredIds = new Set(projects.map(p => p.id));
+    const linked = new Set(
+      cache.projectCapabilities.filter(pc => filteredIds.has(pc.projectId)).map(pc => pc.capabilityId)
+    );
     const caps = cache.capabilities
       .filter(c => linked.has(c.id))
       .sort((a, b) => a.domain.localeCompare(b.domain) || a.sortOrder - b.sortOrder);
 
     return caps.map(c => {
-      const projIds = new Set(cache.projectCapabilities.filter(pc => pc.capabilityId === c.id).map(pc => pc.projectId));
-      const projects = cache.projects.filter(p => projIds.has(p.id));
+      const capProjIds = new Set(cache.projectCapabilities.filter(pc => pc.capabilityId === c.id).map(pc => pc.projectId));
+      const laneProjects = projects.filter(p => capProjIds.has(p.id));
       const eols = inferEolsForCapability(c.id);
-      return { label: `${c.title}`, title: `${c.domain} · ${c.title}`, projects, eols };
+      return { label: c.title, title: `${c.domain} · ${c.title}`, projects: laneProjects, eols };
+    });
+  }
+
+  function applicationLanes() {
+    const projects = filteredProjects();
+    const filteredIds = new Set(projects.map(p => p.id));
+    const linked = cache.projectApplications.filter(pa => filteredIds.has(pa.projectId));
+    const appIds = new Set(linked.map(pa => pa.applicationId));
+    const apps = cache.applications
+      .filter(a => appIds.has(a.id))
+      .sort((a, b) => (a.eaTier || 9) - (b.eaTier || 9) || a.title.localeCompare(b.title));
+
+    return apps.map(app => {
+      const projIds = new Set(linked.filter(pa => pa.applicationId === app.id).map(pa => pa.projectId));
+      const laneProjects = projects.filter(p => projIds.has(p.id));
+      const eols = app.eolDate
+        ? [{ label: app.title, date: parseEolDate(app.eolDate) }].filter(x => x.date)
+        : [];
+      return {
+        label: app.title,
+        title: `Tier ${app.eaTier || '?'} · ${app.vendor ? app.vendor + ' · ' : ''}${app.title}`,
+        projects: laneProjects,
+        eols
+      };
     });
   }
 
@@ -218,6 +269,7 @@
   function parseEolDate(s) {
     if (!s) return null;
     if (/TBD|To Be Determined/i.test(s)) return null;
+    if (/^\d{4}-\d{2}-\d{2}$/.test(String(s).trim())) return String(s).trim();
     const r = String(s).match(/(\d{4})(?:-(\d{4}))?/);
     if (!r) return null;
     return r[1] + '-06-15'; // mid-year assumption when only year is given
@@ -227,13 +279,15 @@
 
   // ---------- detail ----------
   function openProjectPanel(pid) {
-    // Reuse projects view's detail through atlasViews.projects? It's not exposed.
-    // Open a minimal panel here.
     const p = cache.projects.find(x => x.id === pid);
     const caps = cache.projectCapabilities
       .filter(pc => pc.projectId === pid)
       .map(pc => ({ ...pc, capability: cache.capabilities.find(c => c.id === pc.capabilityId) }))
       .filter(x => x.capability);
+    const strategies = cache.projectStrategies
+      .filter(ps => ps.projectId === pid)
+      .map(ps => cache.enterpriseStrategies.find(s => s.id === ps.strategyId))
+      .filter(Boolean);
 
     window.atlasUI.openPanel({
       eyebrow: `${p.program} · ${p.priority} · ${p.status}`,
@@ -252,6 +306,16 @@
             CPEX: <strong>${p.totalCpex ? '$' + p.totalCpex.toLocaleString() : '—'}</strong><br>
             OPEX impact: <strong>${esc(p.opexImpact || '—')}</strong>
           </div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-section-label">Strategy alignment (${strategies.length})</div>
+          ${strategies.length ? `<ul class="linked-list">
+            ${strategies.map(s => `<li>
+              <span style="border-left:3px solid ${esc(s.colour)};padding-left:8px">${esc(s.title)}</span>
+              <span class="meta">${esc(s.owner)}</span>
+            </li>`).join('')}
+          </ul>` : `<div class="detail-prose" style="color:var(--ink-3)">No strategy alignment mapped.</div>`}
         </div>
 
         <div class="detail-section">

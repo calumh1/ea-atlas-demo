@@ -68,6 +68,16 @@
   function paint() {
     renderStats();
     renderRows();
+    markSort();
+  }
+
+  function markSort() {
+    document.querySelectorAll('[data-sort]').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === state.sort) {
+        th.classList.add(state.dir === 1 ? 'sort-asc' : 'sort-desc');
+      }
+    });
   }
 
   function renderStats() {
@@ -159,6 +169,10 @@
       .filter(pa => pa.projectId === pid)
       .map(pa => ({ ...pa, application: cache.applications.find(a => a.id === pa.applicationId) }))
       .filter(x => x.application);
+    const strategies = cache.projectStrategies
+      .filter(ps => ps.projectId === pid)
+      .map(ps => cache.enterpriseStrategies.find(s => s.id === ps.strategyId))
+      .filter(Boolean);
 
     window.atlasUI.openPanel({
       eyebrow: `${p.program} · ${p.category}`,
@@ -212,6 +226,16 @@
               <span class="meta">${esc(a.relationshipType)}</span>
             </li>`).join('')}
           </ul>` : `<div class="detail-prose" style="color:var(--ink-3)">No application impacts mapped yet.</div>`}
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-section-label">Strategy alignment (${strategies.length})</div>
+          ${strategies.length ? `<ul class="linked-list">
+            ${strategies.map(s => `<li>
+              <span style="border-left:3px solid ${esc(s.colour)};padding-left:8px">${esc(s.title)}</span>
+              <span class="meta">${esc(s.owner)}</span>
+            </li>`).join('')}
+          </ul>` : `<div class="detail-prose" style="color:var(--ink-3)">No strategy alignment mapped yet.</div>`}
         </div>
 
         ${p.comments ? `<div class="detail-section">

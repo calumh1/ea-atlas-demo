@@ -78,6 +78,16 @@
   function paint() {
     renderStats();
     renderRows();
+    markSort();
+  }
+
+  function markSort() {
+    document.querySelectorAll('[data-sort]').forEach(th => {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === state.sort) {
+        th.classList.add(state.dir === 1 ? 'sort-asc' : 'sort-desc');
+      }
+    });
   }
 
   function renderStats() {
